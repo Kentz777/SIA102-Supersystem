@@ -166,6 +166,7 @@ class Action
 		$data .= ", price = '$price' ";
 		$data .= ", category_id = '$category_id' ";
 		$data .= ", description = '$description' ";
+		$data .= ", qty = '$qty' ";
 		if (isset($status) && $status  == 'on')
 			$data .= ", status = 1 ";
 		else

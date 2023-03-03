@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">\
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <style>
 	.custom-menu {
@@ -150,14 +150,7 @@ a.custom-menu-list span.icon{
     </div>
   </div>
 
-
-  
-		</div>
-		</div>
-	</div>
-
-</div>
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
 <script>
 var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
@@ -182,6 +175,13 @@ new Chart("myChart", {
   }
 });
 </script>
+
+  
+		</div>
+		</div>
+	</div>
+
+</div>
 
 
 </body>
