@@ -244,6 +244,14 @@ class Action
 			return 1;
 	}
 
+	function delete_cart()
+	{
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM cart where id = " . $id);
+		if ($delete)
+			return 1;
+	}
+
 	function save_order()
 	{
 		extract($_POST);
@@ -275,4 +283,5 @@ class Action
 		if ($save)
 			return 1;
 	}
+
 }
