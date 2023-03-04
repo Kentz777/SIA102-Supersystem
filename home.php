@@ -43,7 +43,7 @@
                     <?php "<br>" ?>
                     <div class="col-lg-3" style="margin-bottom: 20px;">
                      <div class="card menu-item ">
-                        <img src="assets/img/<?php echo $row['img_path'] ?>" class="card-img-top" alt="...">
+                        <img style="height:400px;"src="assets/img/<?php echo $row['img_path'] ?>" class="card-img-top" alt="...">
                         
                         <div class="card-body">
                           <h5 class="card-title"><?php echo $row['name'] ?></h5>

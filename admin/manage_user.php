@@ -10,6 +10,8 @@ session_start();  ?>
 
 				?>
 				<label class="control-label">User</label>
+
+				<!-- this -->
 				<input type="text" class="form-control" name="name" placeholder=""><?php echo $_SESSION['x'] ?>
 			</div>
 		</div>

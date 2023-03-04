@@ -166,7 +166,7 @@ class Action
 		$data .= ", price = '$price' ";
 		$data .= ", category_id = '$category_id' ";
 		$data .= ", description = '$description' ";
-		$data .= ", qty = '$qty' ";
+		$data .= ", prod_qty = '$qty' ";
 		if (isset($status) && $status  == 'on')
 			$data .= ", status = 1 ";
 		else
@@ -259,7 +259,7 @@ class Action
 
 				$data = " order_id = '$id' ";
 				$data .= ", product_id = '" . $row['product_id'] . "' ";
-				$data .= ", qty = '" . $row['qty'] . "' ";
+				$data .= ", qty = '" . $row['prod_qty'] . "' ";
 				$save2 = $this->db->query("INSERT INTO order_list set " . $data);
 				if ($save2) {
 					$this->db->query("DELETE FROM cart where id= " . $row['id']);

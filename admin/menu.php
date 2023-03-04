@@ -104,7 +104,7 @@
 						
 									</td>
 									<td class="text-center">
-										<p> <b> <?php echo 'x' . $row['qty'] ?> </b></p>
+										<p> <b> <?php echo 'x' . $row['prod_qty'] ?> </b></p>
 									</td>
 									<td class="text-center">
 										<button class="btn btn-sm btn-primary edit_menu" type="button" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['name'] ?>" data-status="<?php echo $row['status'] ?>" data-description="<?php echo $row['description'] ?>" data-price="<?php echo $row['price'] ?>" data-img_path="<?php echo $row['img_path'] ?>">Edit</button>
