@@ -69,6 +69,13 @@ if($action == "get_cart_count"){
 	if($save)
 		echo $save;
 }
+
+if($action == "delete_cart"){
+	$save = $crud->delete_cart();
+	if($save)
+		echo $save;
+}
+
 if($action == "update_cart_qty"){
 	$save = $crud->update_cart_qty();
 	if($save)
