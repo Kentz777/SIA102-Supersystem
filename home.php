@@ -1,17 +1,38 @@
- <!-- Masthead-->
-        <!-- <header class="masthead">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-10 align-self-end mb-4 page-title">
-                    	<h3 class="text-white">Welcome to <php echo $_SESSION['setting_name']; ?></h3>
-                        <hr class="divider my-4" />
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#menu">Order Now</a>
+<style>
+    .topsellerz h2{
+        color:#242526;
+        font-size:36px;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-top: 50px;
+    }
+    hr.orange-line {
+  border: 5px solid #E89548;
+  border-radius: 5px;
+  max-width:250px;
+}
 
-                    </div>
-                    
-                </div>
-            </div>
-        </header> -->
+.responsive-two-columns {
+    display:flex;
+    flex-wrap:wrap;
+    background-color: #E89548;
+}
+
+/* columns */
+.responsive-two-columns > * {
+    width:100%;
+    padding:1rem;
+}
+
+/* tablet breakpoint */
+@media (min-width:768px) {
+    .responsive-two-columns > * {
+        width:50%;
+    }
+}
+
+
+</style>
         <link href="css/main.css" rel="stylesheet" />
         <section class="home" id="home">
             <div class="container">
@@ -23,7 +44,7 @@
                         <p>Vestibulum sed augue ac lorem rutrum congue. Donec cursus mollis sapien, non vulputate odio
                             congue id. Sed mattis, tortor nec facilisis laoreet, mauris magna finibus nisl, eu pulvinar
                             erat libero in turpis. </p>
-                        <a href="#" class="btn">Order Now</a>
+                        <a href="items.php" class="btn">Order Now</a>
 
                     </div>
                     <div class="col-right">
@@ -32,8 +53,12 @@
                 </div>
             </div>
 
-        </section>
-	<section class="page-section" id="menu">
+            <div class="topsellerz">
+        <h2><center>Top Sellers
+            <hr class="orange-line"/>
+        </center></h2>
+        
+       </div>
         <div id="menu-field" class="card-deck">
                 <?php 
                     include'admin/db_connect.php';
@@ -59,7 +84,18 @@
                       </div>
                     <?php endwhile; ?>
         </div>
-    </section>
+   
+
+        </section>
+
+     
+        <div class="responsive-two-columns">
+    <div>1</div>
+    <div>2</div>
+</div>
+
+	
+    
     <script>
         $('.view_prod').click(function(){
             uni_modal_right('Product','view_prod.php?id='+$(this).attr('data-id'))
