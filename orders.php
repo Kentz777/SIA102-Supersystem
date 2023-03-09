@@ -61,26 +61,104 @@ thead {
                     <div class="table-responsive table-borderless">
                         <table class="table">
                             <thead>
+                            <tr >
+                                    <th  colspan="8" style="background-color:black; color:white;">Orders</th>
+                                </tr>
                                 <tr>
                                     <th class="text-center">
-                                        <div class="toggle-btn">
-                                            <div class="inner-circle"></div>
-                                        </div>
+                                        
+                                       
                                     </th>
                                     <th>Order #</th>
-                                    <th>Company name</th>
+                                    <th>Item</th>
+                                    <th>Qty</th>
                                     <th>status</th>
                                     <th>Total</th>
-                                    <th>Created</th>
+                                    <th>Date</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody class="table-body">
                                 <tr class="cell-1">
                                     <td class="text-center">
-                                        <div class="toggle-btn">
-                                            <div class="inner-circle"></div>
-                                        </div>
+                                        
+                                     
+                                    </td>
+                                    <td>#SO-13487</td>
+                                    <td>Gasper Antunes</td>
+                                    <td>2</td>
+                                    <td><span class="badge badge-success">Fullfilled</span></td>
+                                    <td>$2674.00</td>
+                                    <td>Today</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        
+                                     
+                                    </td>
+                                    <td>#SO-13487</td>
+                                    <td>Gasper Antunes</td>
+                                    <td>2</td>
+                                    <td><span class="badge badge-success">Fullfilled</span></td>
+                                    <td>$2674.00</td>
+                                    <td>Today</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        
+                                     
+                                    </td>
+                                    <td>#SO-13487</td>
+                                    <td>Gasper Antunes</td>
+                                    <td>2</td>
+                                    <td><span class="badge badge-success">Fullfilled</span></td>
+                                    <td>$2674.00</td>
+                                    <td>Today</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        
+                                     
+                                    </td>
+                                    <td>#SO-13487</td>
+                                    <td>Gasper Antunes</td>
+                                    <td>2</td>
+                                    <td><span class="badge badge-success">Fullfilled</span></td>
+                                    <td>$2674.00</td>
+                                    <td>Today</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="rounded">
+                    <div class="table-responsive table-borderless">
+                        <table class="table">
+                            <thead>
+                                <tr >
+                                    <th  colspan="7" style="background-color:black; color:white;">Services</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">
+                                    </th>
+                                    <th>Order #</th>
+                                    <th>Service</th>
+                                    <th>status</th>
+                                    <th>Total</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        
+                                     
                                     </td>
                                     <td>#SO-13487</td>
                                     <td>Gasper Antunes</td>
@@ -91,9 +169,9 @@ thead {
                                 </tr>
                                 <tr class="cell-1">
                                     <td class="text-center">
-                                        <div class="toggle-btn">
-                                            <div class="inner-circle"></div>
-                                        </div>
+                                    
+                                         
+                                    
                                     </td>
                                     <td>#SO-13453</td>
                                     <td>Aartsen van</td>
@@ -104,9 +182,8 @@ thead {
                                 </tr>
                                 <tr class="cell-1">
                                     <td class="text-center">
-                                        <div class="toggle-btn">
-                                            <div class="inner-circle"></div>
-                                        </div>
+                                        
+                                      
                                     </td>
                                     <td>#SO-13498</td>
                                     <td>Trashes Habard</td>
@@ -117,9 +194,7 @@ thead {
                                 </tr>
                                 <tr class="cell-1">
                                     <td class="text-center">
-                                        <div class="toggle-btn">
-                                            <div class="inner-circle"></div>
-                                        </div>
+                                       
                                     </td>
                                     <td>#SO-16499</td>
                                     <td>Samban Hubart</td>
@@ -132,6 +207,7 @@ thead {
                         </table>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
