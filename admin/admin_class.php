@@ -87,15 +87,18 @@ class Action
 			return 1;
 		}
 	}
+
 	function signup()
 	{
 		extract($_POST);
 		$data = " first_name = '$first_name' ";
 		$data .= ", last_name = '$last_name' ";
-		$data .= ", mobile = '$mobile' ";
-		$data .= ", address = '$address' ";
 		$data .= ", email = '$email' ";
 		$data .= ", password = '" . md5($password) . "' ";
+		$data .= ", address = '$room' ";
+		$data .= ", contact = '$contact' ";
+		$data .= ", bill = '$bill' ";
+		
 		$chk = $this->db->query("SELECT * FROM user_info where email = '$email' ")->num_rows;
 		if ($chk > 0) {
 			return 2;
@@ -138,7 +141,6 @@ class Action
 			return 1;
 		}
 	}
-
 
 	function save_category()
 	{
