@@ -12,7 +12,7 @@ session_start();  ?>
 				<label class="control-label">User</label>
 
 				<!-- this -->
-				<input type="text" class="form-control" name="name" placeholder=""><?php echo $_SESSION['x'] ?>
+				<input type="text" class="form-control" name="name" placeholder="">
 			</div>
 		</div>
 	</form>
@@ -30,7 +30,7 @@ session_start();  ?>
 			method: 'POST',
 			type: 'POST',
 			success: function(resp) {
-				if ($_SESSION['x'] == 0) {
+				if (resp) {
 					alert_toast("Data successfully added", 'success')
 					setTimeout(function() {
 						location.reload()
