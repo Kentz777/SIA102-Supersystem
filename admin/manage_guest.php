@@ -50,7 +50,7 @@ session_start();  ?>
 		e.preventDefault()
 		start_load()
 		$.ajax({
-			url: 'ajax.php?action=save_guest',
+			url: 'ajax.php?action=signup',
 			data: new FormData($(this)[0]),
 			cache: false,
 			contentType: false,
