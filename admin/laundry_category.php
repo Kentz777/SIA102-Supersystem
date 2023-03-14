@@ -92,7 +92,7 @@
 		e.preventDefault()
 		start_load()
 		$.ajax({
-			url:'ajax.php?action=save_category',
+			url:'ajax.php?action=save_service_category',
 			data: new FormData($(this)[0]),
 		    cache: false,
 		    contentType: false,
@@ -131,7 +131,7 @@
 	function delete_cat($id){
 		start_load()
 		$.ajax({
-			url:'ajax.php?action=delete_category',
+			url:'ajax.php?action=delete_service_category',
 			method:'POST',
 			data:{id:$id},
 			success:function(resp){

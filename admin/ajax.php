@@ -94,3 +94,46 @@ if($action == "confirm_order"){
 		echo $save;
 }
 
+// Services
+
+if($action == "save_service_category"){
+	$save = $crud->save_service_category();
+	if($save)
+		echo $save;
+}
+if($action == "delete_service_category"){
+	$save = $crud->delete_service_category();
+	if($save)
+		echo $save;
+}
+if($action == "save_supply"){
+	$save = $crud->save_supply();
+	if($save)
+		echo $save;
+}
+if($action == "delete_supply"){
+	$save = $crud->delete_supply();
+	if($save)
+		echo $save;
+}
+if($action == "save_laundry"){
+	$save = $crud->save_laundry();
+	if($save)
+		echo $save;
+}
+if($action == "delete_laundry"){
+	$save = $crud->delete_laundry();
+	if($save)
+		echo $save;
+}
+if($action == "save_inv"){
+	$save = $crud->save_inv();
+	if($save)
+		echo $save;
+}
+if($action == "delete_inv"){
+	$save = $crud->delete_inv();
+	if($save)
+		echo $save;
+}
+

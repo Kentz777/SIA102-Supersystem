@@ -95,8 +95,8 @@ class Action
 		$data .= ", last_name = '$last_name' ";
 		$data .= ", email = '$email' ";
 		$data .= ", password = '" . md5($password) . "' ";
+		$data .= ", mobile = '$contact' ";
 		$data .= ", address = '$room' ";
-		$data .= ", contact = '$contact' ";
 		$data .= ", bill = '$bill' ";
 		
 		$chk = $this->db->query("SELECT * FROM user_info where email = '$email' ")->num_rows;
@@ -286,4 +286,123 @@ class Action
 			return 1;
 	}
 
+
+
+	// Services
+
+	function save_service_category(){
+		extract($_POST);
+		$data = " name = '$name' ";
+		$data .= ", price = '$price' ";
+		if(empty($id)){
+			$save = $this->db->query("INSERT INTO laundry_categories set ".$data);
+		}else{
+			$save = $this->db->query("UPDATE laundry_categories set ".$data." where id=".$id);
+		}
+		if($save)
+			return 1;
+	}
+
+	function delete_service_category(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM laundry_categories where id = ".$id);
+		if($delete)
+			return 1;
+	}
+
+	function save_supply(){
+		extract($_POST);
+		$data = " name = '$name' ";
+		if(empty($id)){
+			$save = $this->db->query("INSERT INTO supply_list set ".$data);
+		}else{
+			$save = $this->db->query("UPDATE supply_list set ".$data." where id=".$id);
+		}
+		if($save)
+			return 1;
+	}
+
+	function delete_supply(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM supply_list where id = ".$id);
+		if($delete)
+			return 1;
+	}
+
+	function save_laundry(){
+		extract($_POST);
+		$data = " customer_name = '$customer_name' ";
+		$data .= ", remarks = '$remarks' ";
+		$data .= ", total_amount = '$tamount' ";
+		$data .= ", amount_tendered = '$tendered' ";
+		$data .= ", amount_change = '$change' ";
+		if(isset($pay)){
+			$data .= ", pay_status = '1' ";
+		}
+		if(isset($status))
+			$data .= ", status = '$status' ";
+		if(empty($id)){
+			$queue = $this->db->query("SELECT `queue` FROM laundry_list where status != 3 order by id desc limit 1");
+			$queue =$queue->num_rows > 0 ? $queue->fetch_array()['queue']+1 : 1;
+			$data .= ", queue = '$queue' ";
+			$save = $this->db->query("INSERT INTO laundry_list set ".$data);
+			if($save){
+				$id = $this->db->insert_id;
+				foreach ($weight as $key => $value) {
+					$items = " laundry_id = '$id' ";
+					$items .= ", laundry_category_id = '$laundry_category_id[$key]' ";
+					$items .= ", weight = '$weight[$key]' ";
+					$items .= ", unit_price = '$unit_price[$key]' ";
+					$items .= ", amount = '$amount[$key]' ";
+					$save2 = $this->db->query("INSERT INTO laundry_items set ".$items);
+				}
+				return 1;
+			}		
+		}else{
+			$save = $this->db->query("UPDATE laundry_list set ".$data." where id=".$id);
+			if($save){
+				$this->db->query("DELETE FROM laundry_items where id not in (".implode(',',$item_id).") ");
+				foreach ($weight as $key => $value) {
+					$items = " laundry_id = '$id' ";
+					$items .= ", laundry_category_id = '$laundry_category_id[$key]' ";
+					$items .= ", weight = '$weight[$key]' ";
+					$items .= ", unit_price = '$unit_price[$key]' ";
+					$items .= ", amount = '$amount[$key]' ";
+					if(empty($item_id[$key]))
+						$save2 = $this->db->query("INSERT INTO laundry_items set ".$items);
+					else
+						$save2 = $this->db->query("UPDATE laundry_items set ".$items." where id=".$item_id[$key]);
+				}
+				return 1;
+			}	
+		}
+	}
+	function delete_laundry(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM laundry_list where id = ".$id);
+		$delete2 = $this->db->query("DELETE FROM laundry_items where laundry_id = ".$id);
+		if($delete && $delete2)
+			return 1;
+	}
+
+	function save_inv(){
+		extract($_POST);
+		$data = " supply_id = '$supply_id' ";
+		$data .= ", qty = '$qty' ";
+		$data .= ", stock_type = '$stock_type' ";
+		if(empty($id)){
+			$save = $this->db->query("INSERT INTO inventory set ".$data);
+		}else{
+			$save = $this->db->query("UPDATE inventory set ".$data." where id=".$id);
+		}
+		if($save)
+			return 1;
+	}
+
+	function delete_inv(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM inventory where id = ".$id);
+		if($delete)
+			return 1;
+	}
 }
