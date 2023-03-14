@@ -12,10 +12,6 @@
   max-width:250px;
 }
 
-
-
-
-
 svg {
   display: block;
   overflow: visible;
@@ -294,13 +290,74 @@ svg {
 
 </style>
         <link href="css/main.css" rel="stylesheet" />
+
+
+        <section class="home" id="home">
+            <div class="container">
+                <div class="home-wrapper d-grid">
+                    <div class="col-left">
+                        <h3>Welcome TO</h3>
+                        <h1>Foods And<br>Room Services</h1>
+
+                        <p>Vestibulum sed augue ac lorem rutrum congue. Donec cursus mollis sapien, non vulputate odio
+                            congue id. Sed mattis, tortor nec facilisis laoreet, mauris magna finibus nisl, eu pulvinar
+                            erat libero in turpis. </p>
+                        <a href="items.php" class="btn">Order Now</a>
+
+                    </div>
+                    <div class="col-right">
+                        <img data-tilt src="./assets/img/hero-banner.png" alt="Home image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
+            <div class="topsellerz">
+        <h2><center>Top Sellers
+            <hr class="orange-line"/>
+        </center></h2>
+        
+       </div>
+        <div id="menu-field" class="card-deck">
+                <?php 
+                    include'admin/db_connect.php';
+                    $qry = $conn->query("SELECT * FROM  product_list order by rand() ");
+                    while($row = $qry->fetch_assoc()):
+                    ?>
+                    <?php "<br>" ?>
+                    <div class="col-lg-3" style="margin-bottom: 20px;">
+                     <div class="card menu-item ">
+                        <img style="height:400px;"src="assets/img/<?php echo $row['img_path'] ?>" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                          <h5 class="card-title"><?php echo $row['name'] ?></h5>
+                          <p class="card-text truncate"><?php echo $row['description'] ?></p>
+                          <h6 class="card-title">Price: $<?php echo $row['price'] ?></h6>
+                          <div class="text-center">
+                              <button class="btn btn-sm btn-outline-primary view_prod btn-block" data-id=<?php echo $row['id'] ?>><i class="fa fa-eye"></i> View</button>
+                              
+                          </div>
+                        </div>
+                        
+                      </div>
+                      </div>
+                    <?php endwhile; ?>
+        </div>
+        </section>
+        
+        
+
+
         <div class="slider-container">
   <div class="slider-control left inactive"></div>
   <div class="slider-control right"></div>
   <ul class="slider-pagi"></ul>
   <div class="slider">
     <div class="slide slide-0 active">
-      <div class="slide__bg"></div>
+      <div class="slide__bg"></div> 
       <div class="slide__content">
         <svg class="slide__overlay" viewBox="0 0 720 405" preserveAspectRatio="xMaxYMax slice">
           <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
@@ -354,43 +411,43 @@ svg {
   </div>
 </div>
 
-            <div class="topsellerz">
-        <h2><center>Top Sellers
-            <hr class="orange-line"/>
-        </center></h2>
-        
-       </div>
-        <div id="menu-field" class="card-deck">
-                <?php 
-                    include'admin/db_connect.php';
-                    $qry = $conn->query("SELECT * FROM  product_list order by rand() ");
-                    while($row = $qry->fetch_assoc()):
-                    ?>
-                    <?php "<br>" ?>
-                    <div class="col-lg-3" style="margin-bottom: 20px;">
-                     <div class="card menu-item ">
-                        <img style="height:400px;"src="assets/img/<?php echo $row['img_path'] ?>" class="card-img-top" alt="...">
-                        
-                        <div class="card-body">
-                          <h5 class="card-title"><?php echo $row['name'] ?></h5>
-                          <p class="card-text truncate"><?php echo $row['description'] ?></p>
-                          <h6 class="card-title">Price: $<?php echo $row['price'] ?></h6>
-                          <div class="text-center">
-                              <button class="btn btn-sm btn-outline-primary view_prod btn-block" data-id=<?php echo $row['id'] ?>><i class="fa fa-eye"></i> View</button>
-                              
-                          </div>
-                        </div>
-                        
-                      </div>
-                      </div>
-                    <?php endwhile; ?>
-        </div>
-   
-
-        </section>
-
      
       
+
+<div id="os2" class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/onestep2.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">The Return of a Holiday Classic</h4>
+					<p>Capture and share your favorite moments with an instant classic, the new Polaroid OneStep 2 analog instant camera.</p>
+					<div class="product-buttons">
+						<a href="http://bit.ly/2hHWmgN" target="_blank" id="OneStep2" class="gift-guide-2017 shop btn">Shop Now</a>
+					</div>
+				</div>
+			</div>
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/600-film-2.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Celebrate with a Vintage Flair</h4>
+					<p>Recreate old holiday memories or make new ones with instant film for classic Polaroid 600, SX-70 and Spectra cameras as well as the new i-Type film for the Polaroid OneStep 2.</p>
+					<div class="product-buttons">
+						<a href="http://bit.ly/2hqwtm2" target="_blank" id="Instant-Film" class="gift-guide-2017 shop btn">Shop Now</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-pop.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Make the Holidays POP</h4>
+					<p>Retro style with a modern twist. Shoot, edit and share all the festivities in the 3.5x4.25" Polaroid border format with the Polaroid Pop instant digital camera.</p>
+					<div class="product-buttons">
+						<a href="http://geni.us/W3bI" target="_blank" id="POP" class="gift-guide-2017 shop btn">Shop Now</a>
+					</div>
+				</div>
+			</div>
+			
+
+
 
 	
     

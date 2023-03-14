@@ -6,8 +6,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<button class="btn btn-primary float-right btn-sm" id="new_user"><i class="fa fa-plus"></i> New
-				user</button>
+			<button class="btn btn-primary float-right btn-sm" id="new_user"><i class="fa fa-plus"></i> New user</button>
 		</div>
 	</div>
 	<br>
@@ -31,8 +30,8 @@
 						include 'db_connect.php';
 						$users = $conn->query("SELECT * FROM user_info order by first_name asc");
 						$i = 1;
-						while ($row = $users->fetch_assoc()):
-							?>
+						while ($row = $users->fetch_assoc()) :
+						?>
 							<tr>
 								<td>
 									<?php echo $i++ ?>
@@ -56,16 +55,13 @@
 									<center>
 										<div class="btn-group">
 											<button type="button" class="btn btn-primary">Action</button>
-											<button type="button"
-												class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-												data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<span class="sr-only">Toggle Dropdown</span>
 											</button>
 											<div class="dropdown-menu">
 												<a class="dropdown-item edit_user" href="javascript:void(0)">Edit</a>
 												<div class="dropdown-divider"></div>
-												<a class="dropdown-item delete_user" href="javascript:void(0)"
-													data-id='<?php echo $row['id'] ?>'>Delete</a>
+												<a class="dropdown-item delete_user" href="javascript:void(0)" data-id='<?php echo $row['id'] ?>'>Delete</a>
 											</div>
 										</div>
 									</center>
@@ -80,10 +76,10 @@
 
 </div>
 <script>
-	$('#new_user').click(function () {
+	$('#new_user').click(function() {
 		uni_modal('New Guest', 'manage_guest.php')
 	})
-	$('.edit_user').click(function () {
+	$('.edit_user').click(function() {
 		uni_modal('Edit User', 'manage_guest.php?id=' + $(this).attr('data-id'))
 	})
 </script>
