@@ -287,6 +287,128 @@ svg {
   transform: rotateX(0);
 }
 
+/**
+ASDASDASD
+
+*/
+
+#featured-products {
+	
+	background: url(http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/snowflake-background.png);
+	background-repeat: repeat;
+	background-position: top left;
+}
+	#featured-products .product-row {
+		padding: 120px 0 0;
+		align-items: center;
+  }
+  #featured-products .product-image {
+			max-width: 400px;
+			margin: 0 auto;
+		}
+		#featured-products .product-text {
+			background: transparent;
+		}
+		#featured-products .product-title {
+			font-size: 28px;
+			color: #3d7ec5;
+		}
+		#featured-products p {
+			line-height: 1.5;
+			font-size: 19px;
+		}
+		#featured-products .product-buttons {
+			align-self: flex-end;
+			margin: 1em 0;
+		}
+		#featured-products a.shop.btn {
+			font-size: 20px;
+		font-weight: 600;
+			color: #222;
+			text-decoration: none;
+			font-family: 'UniversLTPro-55Roman', arial, helvetica, sans-serif;
+			margin: 10px 0 0;
+    text-transform: uppercase;
+    font-family: 'UniversLTPro-55Roman',arial,helvetica,sans-serif;
+    padding: 14px 0 10px 2em;
+    display: block;
+    position: relative;
+    background: url(http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/btn-icon-gray.png) no-repeat left center;
+		background-size: auto;
+		transition: filter .15s;
+			-webkit-filter: opacity(1);
+  	filter: opacity(1);
+		}
+
+		#featured-products a.shop.btn:hover {
+			 color: #444444;
+			-webkit-filter: opacity(.75);
+  	filter: opacity(.75);
+		}
+	
+    #featured-products .product-row::after {
+		content: "";
+		display: block;
+		clear: both;
+		float: none;
+	}
+	#featured-products .product-row:nth-child(odd) {
+			flex-direction: row-reverse;
+	}
+	@media only screen and (min-width: 620px) {
+		/* .product-row:nth-child(2n+2) {
+			margin-top: 300px;
+		} */
+		#featured-products .product-row:nth-child(odd) .product-image {
+			padding-left: 5%;
+			padding-right: 0;
+		}
+
+		#featured-products .product-row {
+			display: flex;
+			margin-bottom: 0;
+			max-height: 340px;
+			min-height: 380px;
+			align-items: center;
+    }
+
+    #featured-products .product-image {
+			max-width: 420px;
+				width: 45%;
+				float: left;
+				flex: 1 1 45%;
+				padding-right: 5%;
+				max-width: 45%!important;
+				min-width: 320px;
+			}
+			#featured-products .product-text {
+			 display: flex;
+				position: relative;
+				width: 55%;
+				float: right;
+				flex: 1 1 55%;
+				max-width: 55%;
+				 flex-flow: column;
+    		 justify-content: center;
+    		align-items: flex-start;
+      }
+				
+      #featured-products h4 {
+					margin: 0 0 .5em 0;
+					font-family: MuseoSans-500, arial, helvetica, sans-serif;
+				}
+				#featured-products p {
+					 padding-bottom: 1.8em;
+				}
+				#featured-products .product-buttons {
+					 display: flex;
+					 position: absolute;
+					 bottom: 0px;
+					flex-flow: row wrap;
+					 align-self: flex-end;
+        }
+      }
+
 
 </style>
         <link href="css/main.css" rel="stylesheet" />
@@ -414,14 +536,15 @@ svg {
      
       
 
-<div id="os2" class="product-row">
+<section id="featured-products">
+		<div class="content-container">
+			
+			<div id="os2" class="product-row">
 				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/onestep2.png"></div>
 				<div class="product-text">
 					<h4 class="product-title">The Return of a Holiday Classic</h4>
 					<p>Capture and share your favorite moments with an instant classic, the new Polaroid OneStep 2 analog instant camera.</p>
-					<div class="product-buttons">
-						<a href="http://bit.ly/2hHWmgN" target="_blank" id="OneStep2" class="gift-guide-2017 shop btn">Shop Now</a>
-					</div>
+				
 				</div>
 			</div>
 			<div class="product-row">
@@ -429,23 +552,77 @@ svg {
 				<div class="product-text">
 					<h4 class="product-title">Celebrate with a Vintage Flair</h4>
 					<p>Recreate old holiday memories or make new ones with instant film for classic Polaroid 600, SX-70 and Spectra cameras as well as the new i-Type film for the Polaroid OneStep 2.</p>
-					<div class="product-buttons">
-						<a href="http://bit.ly/2hqwtm2" target="_blank" id="Instant-Film" class="gift-guide-2017 shop btn">Shop Now</a>
-					</div>
+					
 				</div>
 			</div>
-
+			
 			<div class="product-row">
 				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-pop.png"></div>
 				<div class="product-text">
 					<h4 class="product-title">Make the Holidays POP</h4>
 					<p>Retro style with a modern twist. Shoot, edit and share all the festivities in the 3.5x4.25" Polaroid border format with the Polaroid Pop instant digital camera.</p>
-					<div class="product-buttons">
-						<a href="http://geni.us/W3bI" target="_blank" id="POP" class="gift-guide-2017 shop btn">Shop Now</a>
-					</div>
+				
 				</div>
 			</div>
-			
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/snap.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Share the Joy in a Snap</h4>
+					<p>Snap, print and share the joys of the season in fun 2x3" prints with the Polaroid Snap Touch instant digital camera.</p>
+					
+				</div>
+			</div>
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-zip.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Spread the Cheer</h4>
+					<p>Customize, print and share good tidings instantly, all from your smartphone with the Polaroid Zip instant photoprinter.</p>
+					
+				</div>
+			</div>
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-tv.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Merry & Bright</h4>
+					<p>Kick off holiday movie marathons right with the brighter, picture perfect display of Polaroid HDTVs.</p>
+				
+				</div>
+			</div>
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/3d-pen.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Believe in Magic</h4>
+					<p>Perfect for kids and kids at heart. Let your imagination soar as you bring festive creations to life with the Polaroid Draw 3D pen.</p>
+					
+				</div>
+			</div>
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-frame.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Deck the Halls</h4>
+					<p>Illuminate your mantle with holiday images or gift a string of memories to someone special with the Polaroid photo frame.</p>
+				
+				</div>
+			</div>
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/motomod-2.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Snap, Print & Share Anywhere</h4>
+					<p>Turn your moto z into a super-portable Polaroid camera, complete with a physical photo capture button. Shoot pics in the moment or select your favorite shots on social media, add fun filters, then print–right from your phone.</p>
+					
+				</div>
+			</div>
+			<div class="product-row">
+				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/apparel.png"></div>
+				<div class="product-text">
+					<h4 class="product-title">Arrive in Style</h4>
+					<p>Upgrade your look this season with the classic design and vintage feel of Polaroid apparel.</p>
+					
+				</div>
+			</div>
+		</div>
+		
+	</section>
 
 
 
