@@ -27,7 +27,8 @@ $query = $conn->query("SELECT * FROM system_settings limit 1")->fetch_array();
 	body{
 		width: 100%;
 	    height: calc(100%);
-	    /*background: #007bff;*/
+	
+		background-image: url("./assets/img/bg.jpeg");
 	}
 	main#main{
 		width:100%;
@@ -49,7 +50,7 @@ $query = $conn->query("SELECT * FROM system_settings limit 1")->fetch_array();
 		width:100%;
 		height: 100%;
 		display: flex;
-		background-image: url("../assets/img/admin.jpg");
+	
 		background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -59,18 +60,18 @@ $query = $conn->query("SELECT * FROM system_settings limit 1")->fetch_array();
 		margin: auto
 	}
 	
+
+	
+
 </style>
 
 <body>
 
 
   <main id="main" class=" bg-dark">
-  		<div id="login-left">
-  			<div class="logo">
-  				<!-- <img src="../assets/img/admin.jpg" alt=""> -->
-  			</div>
-  		</div>
+
   		<div id="login-right">
+			
   			<div class="card col-md-8">
   				<div class="card-body">
   					<form id="login-form" >
