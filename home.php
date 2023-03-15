@@ -144,7 +144,7 @@ svg {
 }
 .slide:nth-child(2) .slide__bg {
   left: -50%;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-2.jpg");
+  background-image: url("https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/3365223/1360/906/m1/fpnw/wm1/azc0jgm8wozxptqcl77j7z2z8kqpii6h8j5n0mh4j6ssidiqaztegfdehuzwfvrg-.jpg?1507211608&s=0573f8b1adf10fa1f09c7153094fd960");
 }
 .slide:nth-child(2) .slide__overlay-path {
   fill: #e1ccae;
@@ -159,7 +159,7 @@ svg {
 }
 .slide:nth-child(3) .slide__bg {
   left: -100%;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-1.jpg");
+  background-image: url("https://focushospitalitymanagement.com/wp-content/uploads/2018/11/staff-hotel-managment-tucson.jpg");
 }
 .slide:nth-child(3) .slide__overlay-path {
   fill: #adc5cd;
@@ -485,9 +485,9 @@ ASDASDASD
           <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
         </svg>
         <div class="slide__text">
-          <h2 class="slide__text-heading">Project name 1</h2>
+          <h2 class="slide__text-heading" style="color:white;">About Us</h2>
           <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
-          <a class="slide__text-link">Project link</a>
+          <a class="slide__text-link">Order Now</a>
         </div>
       </div>
     </div>
@@ -498,7 +498,7 @@ ASDASDASD
           <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
         </svg>
         <div class="slide__text">
-          <h2 class="slide__text-heading">Project name 2</h2>
+          <h2 class="slide__text-heading">Foods We Offer</h2>
           <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
           <a class="slide__text-link">Project link</a>
         </div>
@@ -511,7 +511,7 @@ ASDASDASD
           <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
         </svg>
         <div class="slide__text">
-          <h2 class="slide__text-heading">Project name 3</h2>
+          <h2 class="slide__text-heading">Services we have</h2>
           <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
           <a class="slide__text-link">Project link</a>
         </div>
@@ -524,7 +524,7 @@ ASDASDASD
           <path class="slide__overlay-path" d="M0,0 150,0 500,405 0,405" />
         </svg>
         <div class="slide__text">
-          <h2 class="slide__text-heading">Project name 4</h2>
+          <h2 class="slide__text-heading">Best Experience</h2>
           <p class="slide__text-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
           <a class="slide__text-link">Project link</a>
         </div>
@@ -540,83 +540,60 @@ ASDASDASD
 		<div class="content-container">
 			
 			<div id="os2" class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/onestep2.png"></div>
+				<div class="product-image"><img src="https://tse3.mm.bing.net/th?id=OIP.AhHmWjNrPrvHQik_Qv3MIwHaEL&pid=Api&P=0"></div>
 				<div class="product-text">
-					<h4 class="product-title">The Return of a Holiday Classic</h4>
-					<p>Capture and share your favorite moments with an instant classic, the new Polaroid OneStep 2 analog instant camera.</p>
+					<h4 class="product-title">Head Text</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
 				
 				</div>
 			</div>
 			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/600-film-2.png"></div>
+				<div class="product-image"><img src="https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10016854-5f0418eb148d028eda240f60d61aa312.jpeg?tr=q-40,c-at_max,w-740,h-500&_src=imagekit"></div>
 				<div class="product-text">
-					<h4 class="product-title">Celebrate with a Vintage Flair</h4>
-					<p>Recreate old holiday memories or make new ones with instant film for classic Polaroid 600, SX-70 and Spectra cameras as well as the new i-Type film for the Polaroid OneStep 2.</p>
+					<h4 class="product-title">Head Text</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
 					
 				</div>
 			</div>
 			
 			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-pop.png"></div>
+				<div class="product-image"><img src="https://tse3.mm.bing.net/th?id=OIP.MP6cDWpyNlC3GsoKo3Hc0QHaE8&pid=Api&P=0"></div>
 				<div class="product-text">
-					<h4 class="product-title">Make the Holidays POP</h4>
-					<p>Retro style with a modern twist. Shoot, edit and share all the festivities in the 3.5x4.25" Polaroid border format with the Polaroid Pop instant digital camera.</p>
+					<h4 class="product-title">Head Text</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
 				
 				</div>
 			</div>
 			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/snap.png"></div>
+				<div class="product-image"><img src="https://thumbs.dreamstime.com/b/young-woman-bedroom-phone-young-woman-bedroom-phone-using-smartphone-bed-concept-99593000.jpg"></div>
 				<div class="product-text">
-					<h4 class="product-title">Share the Joy in a Snap</h4>
-					<p>Snap, print and share the joys of the season in fun 2x3" prints with the Polaroid Snap Touch instant digital camera.</p>
+					<h4 class="product-title">Head Text</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
 					
 				</div>
 			</div>
 			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-zip.png"></div>
+				<div class="product-image"><img src="https://tse4.mm.bing.net/th?id=OIP.7fCTm6BR4A8YEebgHWP7QwHaFT&pid=Api&P=0"></div>
 				<div class="product-text">
-					<h4 class="product-title">Spread the Cheer</h4>
-					<p>Customize, print and share good tidings instantly, all from your smartphone with the Polaroid Zip instant photoprinter.</p>
+					<h4 class="product-title">Head Text</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
 					
 				</div>
 			</div>
 			<div class="product-row">
 				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-tv.png"></div>
 				<div class="product-text">
-					<h4 class="product-title">Merry & Bright</h4>
-					<p>Kick off holiday movie marathons right with the brighter, picture perfect display of Polaroid HDTVs.</p>
+					<h4 class="product-title">Head Text</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
 				
 				</div>
 			</div>
+		
 			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/3d-pen.png"></div>
+				<div class="product-image"><img src="https://tse2.mm.bing.net/th?id=OIP.lYX6S3_m1OIrQLQPL-_kiQHaE8&pid=Api&P=0"></div>
 				<div class="product-text">
-					<h4 class="product-title">Believe in Magic</h4>
-					<p>Perfect for kids and kids at heart. Let your imagination soar as you bring festive creations to life with the Polaroid Draw 3D pen.</p>
-					
-				</div>
-			</div>
-			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/polaroid-frame.png"></div>
-				<div class="product-text">
-					<h4 class="product-title">Deck the Halls</h4>
-					<p>Illuminate your mantle with holiday images or gift a string of memories to someone special with the Polaroid photo frame.</p>
-				
-				</div>
-			</div>
-			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/motomod-2.png"></div>
-				<div class="product-text">
-					<h4 class="product-title">Snap, Print & Share Anywhere</h4>
-					<p>Turn your moto z into a super-portable Polaroid camera, complete with a physical photo capture button. Shoot pics in the moment or select your favorite shots on social media, add fun filters, then print–right from your phone.</p>
-					
-				</div>
-			</div>
-			<div class="product-row">
-				<div class="product-image"><img src="http://cdn.agilitycms.com/polaroid/landing-pages/holiday-guide-2017/apparel.png"></div>
-				<div class="product-text">
-					<h4 class="product-title">Arrive in Style</h4>
-					<p>Upgrade your look this season with the classic design and vintage feel of Polaroid apparel.</p>
+					<h4 class="product-title">Head Text</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio veniam minus illo debitis nihil animi facere, doloremque voluptate tempore quia.</p>
 					
 				</div>
 			</div>
