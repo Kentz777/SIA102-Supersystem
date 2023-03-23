@@ -10306,7 +10306,7 @@ div#menu-field img, div#menu-field .menu-item-details {
 
 /* Footer */
 footer {
-  background-color: var(--color-third);
+  background-color: #242526;
 }
 .footer-wrapper {
   padding: 80px 0;
