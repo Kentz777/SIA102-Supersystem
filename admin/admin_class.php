@@ -168,7 +168,6 @@ class Action
 		$data .= ", price = '$price' ";
 		$data .= ", category_id = '$category_id' ";
 		$data .= ", description = '$description' ";
-		$data .= ", prod_qty = '$qty' ";
 		if (isset($status) && $status  == 'on')
 			$data .= ", status = 1 ";
 		else
@@ -404,5 +403,16 @@ class Action
 		$delete = $this->db->query("DELETE FROM inventory where id = ".$id);
 		if($delete)
 			return 1;
+	}
+
+	function select_category(){
+		extract($_POST);
+		$data = " category_id = '$data' ";
+		$search = $this->db->query("SELECT id FROM category");
+		while ($row = $search->fetch_assoc()) {
+			if ($row['category_id']) {
+				$this->db->query("SELECT FROM product_list where ". $data);
+			}
+		}
 	}
 }

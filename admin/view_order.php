@@ -32,6 +32,15 @@
 		</tfoot>
 	</table>
 	<div class="text-center">
+	<div class="form-group">
+						<label for="" class="control-label">Status</label>
+						<select name="status" id="" class="custom-select browser-default">
+							<option value="0" <?php echo $status == 0 ? "selected" : '' ?>>Pending</option>
+							<option value="1" <?php echo $status == 1 ? "selected" : '' ?>>Processing</option>
+							<option value="2" <?php echo $status == 2 ? "selected" : '' ?>>Ready to be Claim</option>
+							<option value="3" <?php echo $status == 3 ? "selected" : '' ?>>Claimed</option>
+						</select>
+					</div>
 		<button class="btn btn-primary" id="confirm" type="button" onclick="confirm_order()">Confirm</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 

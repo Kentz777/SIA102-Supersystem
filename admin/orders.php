@@ -7,9 +7,8 @@
 
 			<th>#</th>
 			<th>Name</th>
-			<th>Address</th>
-			<th>Email</th>
-			<th>Mobile</th>
+			<th>Room No.</th>
+		
 			<th>Status</th>
 			<th></th>
 			</tr>
@@ -25,8 +24,8 @@
 			 		<td><?php echo $i++ ?></td>
 			 		<td><?php echo $row['name'] ?></td>
 			 		<td><?php echo $row['address'] ?></td>
-			 		<td><?php echo $row['email'] ?></td>
-			 		<td><?php echo $row['mobile'] ?></td>
+			 	
+			 	
 			 		<?php if($row['status'] == 1): ?>
 			 			<td class="text-center"><span class="badge badge-success">Confirmed</span></td>
 			 		<?php else: ?>

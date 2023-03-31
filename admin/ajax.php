@@ -137,3 +137,8 @@ if($action == "delete_inv"){
 		echo $save;
 }
 
+if($action == "select_category"){
+	$save = $crud->select_category();
+	if($save)
+		echo $save;
+}

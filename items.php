@@ -120,7 +120,7 @@ body {
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-10 align-self-end mb-4 page-title">
                         
-                    	<h3 class="text-white">Welcome to <php echo $_SESSION['setting_name']; ?></h3>
+                    	<h3 class="text-white">Welcome to <?php echo $_SESSION['setting_name']; ?></h3>
    
                         <hr class="divider my-4" />
             
@@ -146,7 +146,7 @@ body {
 	<section class="page-section" id="menu">
         <div id="menu-field" class="card-deck">
                 <?php 
-                    include'admin/db_connect.php';
+                    include 'admin/db_connect.php';
                     $qry = $conn->query("SELECT * FROM  product_list order by rand() ");
                     while($row = $qry->fetch_assoc()):
                     ?>
