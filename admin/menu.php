@@ -76,8 +76,8 @@
 								<tr>
 									<th class="text-center">#</th>
 									<th class="text-center">Img</th>
-									<th class="text-center">Room</th>
-									
+									<th class="text-center">Product Description</th>
+									<th class="text-center">Category</th>
 									<th class="text-center">Action</th>
 								</tr>
 							</thead>
@@ -89,8 +89,6 @@
 								?>
 									<tr>
 										<td class="text-center"><?php echo $i++ ?></td>
-
-
 										<td class="text-center">
 											<img src="<?php echo isset($row['img_path']) ? '../assets/img/' . $row['img_path'] : '' ?>" alt="" id="cimg">
 										</td>
@@ -100,7 +98,7 @@
 											<p>Price : <b><?php echo "P" . number_format($row['price'], 2) ?></b></p>
 
 										</td>
-										
+										<td class="text-center"><?php echo $row['category_id'] ?></td>
 										<td class="text-center">
 											<button class="btn btn-sm btn-primary edit_menu" type="button" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['name'] ?>" data-status="<?php echo $row['status'] ?>" data-description="<?php echo $row['description'] ?>" data-price="<?php echo $row['price'] ?>" data-img_path="<?php echo $row['img_path'] ?>">Edit</button>
 											<button class="btn btn-sm btn-danger delete_menu" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>

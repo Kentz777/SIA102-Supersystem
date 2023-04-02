@@ -13,322 +13,7 @@
     max-width: 250px;
   }
 
-  svg {
-    display: block;
-    overflow: visible;
-  }
-
-  .slider-container {
-    position: relative;
-    height: 100%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: all-scroll;
-  }
-
-  .slider-control {
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    width: 12%;
-    height: 100%;
-    transition: opacity 0.3s;
-    will-change: opacity;
-    opacity: 0;
-  }
-
-  .slider-control.inactive:hover {
-    cursor: auto;
-  }
-
-  .slider-control:not(.inactive):hover {
-    opacity: 1;
-    cursor: pointer;
-  }
-
-  .slider-control.left {
-    left: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0) 100%);
-  }
-
-  .slider-control.right {
-    right: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 100%);
-  }
-
-  .slider-pagi {
-    position: absolute;
-    z-index: 3;
-    left: 50%;
-    bottom: 2rem;
-    transform: translateX(-50%);
-    font-size: 0;
-    list-style-type: none;
-  }
-
-  .slider-pagi__elem {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    width: 2rem;
-    height: 2rem;
-    margin: 0 0.5rem;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    cursor: pointer;
-  }
-
-  .slider-pagi__elem:before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1.2rem;
-    height: 1.2rem;
-    background: #fff;
-    border-radius: 50%;
-    transition: transform 0.3s;
-    transform: translate(-50%, -50%) scale(0);
-  }
-
-  .slider-pagi__elem.active:before,
-  .slider-pagi__elem:hover:before {
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  .slider {
-    z-index: 1;
-    position: relative;
-    height: 100%;
-  }
-
-  .slider.animating {
-    transition: transform 0.5s;
-    will-change: transform;
-  }
-
-  .slider.animating .slide__bg {
-    transition: transform 0.5s;
-    will-change: transform;
-  }
-
-  .slide {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .slide.active .slide__overlay,
-  .slide.active .slide__text {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .slide__bg {
-    position: absolute;
-    top: 0;
-    left: -50%;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    will-change: transform;
-  }
-
-  .slide:nth-child(1) {
-    left: 0;
-  }
-
-  .slide:nth-child(1) .slide__bg {
-    left: 0;
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-3.jpg");
-  }
-
-  .slide:nth-child(1) .slide__overlay-path {
-    fill: #e99c7e;
-  }
-
-  @media (max-width: 991px) {
-    .slide:nth-child(1) .slide__text {
-      background-color: rgba(233, 156, 126, 0.8);
-    }
-  }
-
-  .slide:nth-child(2) {
-    left: 100%;
-  }
-
-  .slide:nth-child(2) .slide__bg {
-    left: -50%;
-    background-image: url("https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/3365223/1360/906/m1/fpnw/wm1/azc0jgm8wozxptqcl77j7z2z8kqpii6h8j5n0mh4j6ssidiqaztegfdehuzwfvrg-.jpg?1507211608&s=0573f8b1adf10fa1f09c7153094fd960");
-  }
-
-  .slide:nth-child(2) .slide__overlay-path {
-    fill: #e1ccae;
-  }
-
-  @media (max-width: 991px) {
-    .slide:nth-child(2) .slide__text {
-      background-color: rgba(225, 204, 174, 0.8);
-    }
-  }
-
-  .slide:nth-child(3) {
-    left: 200%;
-  }
-
-  .slide:nth-child(3) .slide__bg {
-    left: -100%;
-    background-image: url("https://focushospitalitymanagement.com/wp-content/uploads/2018/11/staff-hotel-managment-tucson.jpg");
-  }
-
-  .slide:nth-child(3) .slide__overlay-path {
-    fill: #adc5cd;
-  }
-
-  @media (max-width: 991px) {
-    .slide:nth-child(3) .slide__text {
-      background-color: rgba(173, 197, 205, 0.8);
-    }
-  }
-
-  .slide:nth-child(4) {
-    left: 300%;
-  }
-
-  .slide:nth-child(4) .slide__bg {
-    left: -150%;
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/3d-slider-4.jpg");
-  }
-
-  .slide:nth-child(4) .slide__overlay-path {
-    fill: #cbc6c3;
-  }
-
-  @media (max-width: 991px) {
-    .slide:nth-child(4) .slide__text {
-      background-color: rgba(203, 198, 195, 0.8);
-    }
-  }
-
-  .slide__content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .slide__overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    min-height: 810px;
-    transition: transform 0.5s 0.5s, opacity 0.2s 0.5s;
-    will-change: transform, opacity;
-    transform: translate3d(-20%, 0, 0);
-    opacity: 0;
-  }
-
-  @media (max-width: 991px) {
-    .slide__overlay {
-      display: none;
-    }
-  }
-
-  .slide__overlay path {
-    opacity: 0.8;
-  }
-
-  .slide__text {
-    position: absolute;
-    width: 25%;
-    bottom: 15%;
-    left: 12%;
-    color: #fff;
-    transition: transform 0.5s 0.8s, opacity 0.5s 0.8s;
-    will-change: transform, opacity;
-    transform: translateY(-50%);
-    opacity: 0;
-  }
-
-  @media (max-width: 991px) {
-    .slide__text {
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 20rem;
-      text-align: center;
-      transform: translateY(50%);
-      transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
-      padding: 0 1rem;
-    }
-  }
-
-  .slide__text-heading {
-    font-family: "Polar", Helvetica, Arial, sans-serif;
-    font-size: 5rem;
-    margin-bottom: 2rem;
-  }
-
-  @media (max-width: 991px) {
-    .slide__text-heading {
-      line-height: 20rem;
-      font-size: 3.5rem;
-    }
-  }
-
-  .slide__text-desc {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  @media (max-width: 991px) {
-    .slide__text-desc {
-      display: none;
-    }
-  }
-
-  .slide__text-link {
-    z-index: 5;
-    display: inline-block;
-    position: relative;
-    padding: 0.5rem;
-    cursor: pointer;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    font-size: 2.3rem;
-    perspective: 1000px;
-  }
-
-  @media (max-width: 991px) {
-    .slide__text-link {
-      display: none;
-    }
-  }
-
-  .slide__text-link:before {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    transform-origin: 50% 100%;
-    transform: rotateX(-85deg);
-    transition: transform 0.3s;
-    will-change: transform;
-  }
-
-  .slide__text-link:hover:before {
-    transform: rotateX(0);
-  }
+ 
 
   /**
 ASDASDASD
@@ -407,6 +92,16 @@ ASDASDASD
     flex-direction: row-reverse;
   }
 
+ 
+  @media (min-width: 576px) {
+    .searchTerm {
+      min-width:800px;
+    background-color: #fff;
+    width: 100%;  
+  }
+  }
+
+
   @media only screen and (min-width: 620px) {
 
     /* .product-row:nth-child(2n+2) {
@@ -463,7 +158,24 @@ ASDASDASD
       flex-flow: row wrap;
       align-self: flex-end;
     }
+
+    .searchTerm {
+ 
+    width: 200px;
   }
+
+  }
+
+  @media (max-width: 576px) {
+    .searchTerm {
+    width: 30px;
+  }
+
+  .search input {
+    font-size: 20px;
+    width:30px;
+  }
+}
 
   #home {
     display: flex;
@@ -499,22 +211,18 @@ ASDASDASD
     font-size: 1.5rem;
     font-family: "Bree Serif", serif;
   }
-
-
-
   .search input {
     font-size: 20px;
+    width:300px;
   }
 
   .search {
-    width: 100%;
     position: relative;
     display: flex;
-
   }
 
   .searchTerm {
-    min-width: 800px;
+   
     border: 3px solid #242526;
     border-right: none;
     padding: 5px;
@@ -544,6 +252,19 @@ ASDASDASD
     cursor: pointer;
     font-size: 20px;
   }
+
+  .wrap {
+        max-width: 960px;
+        padding: 20px;
+        display: flex;
+      }
+  
+      .h-primary{
+        display:flex;
+        justify-content: center;
+        align-items: center ;
+        min-width: 400px;
+      }
 </style>
 <link href="css/main.css" rel="stylesheet" />
 
@@ -587,9 +308,36 @@ ASDASDASD
   </div>
   </section>
 
-
-  <script>
-    $('.view_prod').click(function() {
-      uni_modal_right('Product', 'view_prod.php?id=' + $(this).attr('data-id'))
-    });
-  </script>
+  <section class="page-section" id="menu">
+        <div id="menu-field" class="card-deck">
+                <?php 
+                    include'admin/db_connect.php';
+                    $qry = $conn->query("SELECT * FROM  product_list order by rand() ");
+                    while($row = $qry->fetch_assoc()):
+                    ?>
+                    <?php "<br>" ?>
+                    <div class="col-lg-3" style="margin-bottom: 20px;">
+                     <div class="card menu-item ">
+                        <img style="height:400px;" src="assets/img/<?php echo $row['img_path'] ?>" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                          <h5 class="card-title"><?php echo $row['name'] ?></h5>
+                          <p class="card-text truncate"><?php echo $row['description'] ?></p>
+                          <h6 class="card-title">Price: P<?php echo $row['price'] ?></h6>
+                          <div class="text-center">
+                              <button class="btn btn-sm btn-outline-primary view_prod btn-block" data-id=<?php echo $row['id'] ?>><i class="fa fa-eye"></i> View</button>
+                              
+                          </div>
+                        </div>
+                        
+                      </div>
+                      </div>
+                    <?php endwhile; ?>
+        </div>
+    </section>
+    <script>
+        
+        $('.view_prod').click(function(){
+            uni_modal_right('Product','view_prod.php?id='+$(this).attr('data-id'))
+        })
+    </script>

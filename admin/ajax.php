@@ -131,6 +131,13 @@ if($action == "save_inv"){
 	if($save)
 		echo $save;
 }
+
+if($action == "save_prod_inv"){
+	$save = $crud->save_prod_inv();
+	if($save)
+		echo $save;
+}
+
 if($action == "delete_inv"){
 	$save = $crud->delete_inv();
 	if($save)
