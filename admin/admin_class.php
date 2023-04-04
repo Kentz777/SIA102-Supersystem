@@ -35,6 +35,7 @@ class Action
 	function login2()
 	{
 		extract($_POST);
+		
 		$qry = $this->db->query("SELECT * FROM user_info where email = '" . $email . "' and password = '" . md5($password) . "' ");
 		if ($qry->num_rows > 0) {
 			foreach ($qry->fetch_array() as $key => $value) {

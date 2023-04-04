@@ -9,7 +9,6 @@ session_start() ?>
 		<div class="form-group">
 			<label for="" class="control-label">Password</label>
 			<input type="password" name="password" required="" class="form-control">
-			<small><a href="javascript:void(0)" id="new_account">Test</a></small>
 		</div>
 		<button class="button btn btn-info btn-sm">Login</button>
 	</form>
