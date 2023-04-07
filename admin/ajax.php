@@ -14,6 +14,11 @@ if($action == 'login2'){
 	if($login)
 		echo $login;
 }
+if($action == 'qr'){
+	$qr = $crud->qr();
+	if($qr)
+		echo $qr;
+}
 if($action == 'logout'){
 	$logout = $crud->logout();
 	if($logout)
