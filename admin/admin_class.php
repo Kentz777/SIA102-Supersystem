@@ -55,6 +55,20 @@ class Action
 		}
 	}
 
+	function qr(){
+		extract($_POST);
+		$qry = $this->db->query("SELECT * from booking_details where room_no = '" . $qr . "'");
+		if ($qry->num_rows > 0) {
+			foreach ($qry->fetch_array() as $key => $value) {
+				if ($key != 'passwors' && !is_numeric($key))
+					$_SESSION['login_' . $key] = $value;
+			}
+			return 1;
+		} else {
+			return 3;
+		}
+	}
+
 	function logout()
 	{
 		session_destroy();
