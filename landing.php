@@ -12,19 +12,43 @@ foreach ($query as $key => $value) {
 }
 
 if (isset($_POST['qr'])) {
-    $text = $_POST['qr'];
+    $room_no = mysqli_real_escape_string($conn, $_POST['qr']); // Escape user input to prevent SQL injection
 
-    $sql = "SELECT room_no FROM booking_details WHERE room_no = '$text'";
+    $qry = "SELECT * FROM user_info WHERE room_no = '$room_no'";
 
-    $result = $conn->query($sql);
+    $result = $conn->query($qry);
 
-    if ($result->num_rows > 0) {
-        header("Location: index.php?room_no=$text");
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        foreach ($row as $key => $value) {
+            if ($key !== 'password') {
+                $_SESSION['login_' . $key] = $value;
+            }
+        }
+
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $user_id = isset($_SESSION['login_user_id']) ? $_SESSION['login_user_id'] : null;
+
+        if ($user_id) {
+            $stmt = $conn->prepare("UPDATE cart SET user_id = ? WHERE client_ip = ?");
+            $stmt->bind_param("ss", $user_id, $ip);
+            $stmt->execute();
+            $stmt->close();
+            $url = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php?page=home';
+            header('Location: ' . $url);
+            exit;
+        } else {
+            echo 3;
+        }
     } else {
-        $message = "Invalid room number. Please try again.";
+        echo 2;
     }
+} else {
+    echo 0;
 }
 ?>
+
 
 <style>
     header.masthead {
@@ -53,12 +77,12 @@ if (isset($_POST['qr'])) {
             video: document.getElementById("preview")
         });
         Instascan.Camera.getCameras().then(function(cameras) {
-            if (cameras.length > 0) {
-                scanner.start(cameras[0]);
-            } else {
-                alert("No cameras found");
-            }
-        }).catch(function(e) {
+            if(cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            alert("No cameras found");
+        }
+        }).catch (function(e) {
             console.error(e);
         });
 
@@ -68,7 +92,7 @@ if (isset($_POST['qr'])) {
         });
 
         <?php if (isset($message)) { ?>
-            alert_toast("<?php echo $message; ?>", 'error');
+            alert("<?php echo $message; ?>", 'error');
         <?php } ?>
     </script>
 </body>
