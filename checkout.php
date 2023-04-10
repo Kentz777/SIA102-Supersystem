@@ -16,24 +16,8 @@
                 <form action="" id="checkout-frm">
                     <h4>Confirm Delivery Information</h4>
                     <div class="form-group">
-                        <label for="" class="control-label">Firstname</label>
-                        <input type="text" name="first_name" required="" class="form-control" value="<?php echo $_SESSION['login_first_name'] ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">Email</label>
-                        <input type="text" name="last_name" required="" class="form-control" value="<?php echo $_SESSION['login_last_name'] ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">Contact</label>
-                        <input type="text" name="mobile" required="" class="form-control" value="<?php echo $_SESSION['login_mobile'] ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">Address</label>
-                        <textarea cols="30" rows="3" name="address" required="" class="form-control"><?php echo $_SESSION['login_address'] ?></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="control-label">Email</label>
-                        <input type="email" name="email" required="" class="form-control" value="<?php echo $_SESSION['login_email'] ?>">
+                        <label for="" class="control-label">Room No.</label>
+                        <input type="text" name="room_no" readonly required="" class="form-control" value="<?php echo $_SESSION['login_room_no'] ?>">
                     </div>  
 
                     <div class="text-center">

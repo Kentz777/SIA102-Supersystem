@@ -75,7 +75,7 @@ class Action
 		foreach ($_SESSION as $key => $value) {
 			unset($_SESSION[$key]);
 		}
-		header("location:login.php");
+		header("location:landing.php");
 	}
 	function logout2()
 	{
@@ -271,10 +271,9 @@ class Action
 	function save_order()
 	{
 		extract($_POST);
-		$data = " name = '" . $first_name . " " . $last_name . "' ";
-		$data .= ", address = '$address' ";
-		$data .= ", mobile = '$mobile' ";
-		$data .= ", email = '$email' ";
+
+		$data = " address = '".$room_no."' ";
+
 		$save = $this->db->query("INSERT INTO orders set " . $data);
 		if ($save) {
 			$id = $this->db->insert_id;
