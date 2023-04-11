@@ -13,7 +13,7 @@
     max-width: 250px;
   }
 
- 
+
 
   /**
 ASDASDASD
@@ -92,21 +92,21 @@ ASDASDASD
     flex-direction: row-reverse;
   }
 
- 
+
   @media (min-width: 576px) {
     .searchTerm {
-      min-width:800px;
-    background-color: #fff;
-    width: 100%;  
-  }
+      min-width: 800px;
+      background-color: #fff;
+      width: 100%;
+    }
   }
 
 
   @media only screen and (min-width: 620px) {
 
     /* .product-row:nth-child(2n+2) {
-			margin-top: 300px;
-		} */
+      margin-top: 300px;
+    } */
     #featured-products .product-row:nth-child(odd) .product-image {
       padding-left: 5%;
       padding-right: 0;
@@ -160,22 +160,22 @@ ASDASDASD
     }
 
     .searchTerm {
- 
-    width: 200px;
-  }
+
+      width: 200px;
+    }
 
   }
 
   @media (max-width: 576px) {
     .searchTerm {
-    width: 30px;
-  }
+      width: 30px;
+    }
 
-  .search input {
-    font-size: 20px;
-    width:30px;
+    .search input {
+      font-size: 20px;
+      width: 30px;
+    }
   }
-}
 
   #home {
     display: flex;
@@ -211,9 +211,10 @@ ASDASDASD
     font-size: 1.5rem;
     font-family: "Bree Serif", serif;
   }
+
   .search input {
     font-size: 20px;
-    width:300px;
+    width: 300px;
   }
 
   .search {
@@ -222,7 +223,7 @@ ASDASDASD
   }
 
   .searchTerm {
-   
+
     border: 3px solid #242526;
     border-right: none;
     padding: 5px;
@@ -254,23 +255,23 @@ ASDASDASD
   }
 
   .wrap {
-        max-width: 960px;
-        padding: 20px;
-        display: flex;
-      }
-  
-      .h-primary{
-        display:flex;
-        justify-content: center;
-        align-items: center ;
-        min-width: 400px;
-      }
+    max-width: 960px;
+    padding: 20px;
+    display: flex;
+  }
+
+  .h-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+  }
 </style>
 <link href="css/main.css" rel="stylesheet" />
 
 
 <section id="home">
-  <h1 class="h-primary">Axia Hotel  Foods and Room Services</h1>
+  <h1 class="h-primary">Axia Hotel Foods and Room Services</h1>
 
 
   <div class="wrap">
@@ -284,20 +285,12 @@ ASDASDASD
 
 </section>
 
-
-
-<div class="form-group">
-  <label class="control-label">Category </label>
-  <select name="category_id" id="category_fetch" class="custom-select browser-default">
-    <?php
-    $cat = $conn->query("SELECT * FROM category_list order by name asc ");
-    while ($row = $cat->fetch_assoc()) :
-    ?>
-      <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
-    <?php endwhile; ?>
-  </select>
-
-
+  <div>
+    <select name="" id="category">
+      <option value="" disabled>Select category</option>
+      <option value="all" selected>All</option>
+    </select>
+  </div>
 
   <div class="topsellerz">
     <h2>
@@ -306,38 +299,69 @@ ASDASDASD
       </center>
     </h2>
   </div>
-  </section>
+</section>
 
   <section class="page-section" id="menu">
-        <div id="menu-field" class="card-deck">
-                <?php 
-                    include'admin/db_connect.php';
-                    $qry = $conn->query("SELECT * FROM  product_list order by rand() ");
-                    while($row = $qry->fetch_assoc()):
-                    ?>
-                    <?php "<br>" ?>
-                    <div class="col-lg-3" style="margin-bottom: 20px;">
-                     <div class="card menu-item ">
-                        <img style="height:400px;" src="assets/img/<?php echo $row['img_path'] ?>" class="card-img-top" alt="...">
-                        
-                        <div class="card-body">
-                          <h5 class="card-title"><?php echo $row['name'] ?></h5>
-                          <p class="card-text truncate"><?php echo $row['description'] ?></p>
-                          <h6 class="card-title">Price: P<?php echo $row['price'] ?></h6>
-                          <div class="text-center">
-                              <button class="btn btn-sm btn-outline-primary view_prod btn-block" data-id=<?php echo $row['id'] ?>><i class="fa fa-eye"></i> View</button>
-                              
-                          </div>
-                        </div>
-                        
-                      </div>
-                      </div>
-                    <?php endwhile; ?>
+    <div id="menu-field" class="card-deck">
+    <?php
+      include 'admin/db_connect.php';
+      $qry = $conn->query("SELECT * FROM  product_list order by rand() ");
+      while ($row = $qry->fetch_assoc()):
+        ?>
+        <?php "<br>" ?>
+        <div class="col-lg-3" style="margin-bottom: 20px;">
+          <div class="card menu-item ">
+            <img style="height:400px;" src="assets/img/<?php echo $row['img_path'] ?>" class="card-img-top" alt="...">
+
+            <div class="card-body">
+              <h5 class="card-title">
+                <?php echo $row['name'] ?>
+              </h5>
+              <p class="card-text truncate">
+                <?php echo $row['description'] ?>
+              </p>
+              <h6 class="card-title">Price: P
+                <?php echo $row['price'] ?>
+              </h6>
+              <div class="text-center">
+                <button class="btn btn-sm btn-outline-primary view_prod btn-block" data-id=<?php echo $row['id'] ?>><i
+                    class="fa fa-eye"></i> View</button>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
-    <script>
-        
-        $('.view_prod').click(function(){
-            uni_modal_right('Product','view_prod.php?id='+$(this).attr('data-id'))
-        })
-    </script>
+      <?php endwhile; ?>
+    </div>
+  </section>
+
+
+  <script>
+
+    $(document).ready(function () {
+
+      $.ajax({
+        type: 'GET',
+        url: 'load_categories.php',
+        success: function(data){
+          $('#category').append(data);
+        }
+      });
+
+      $('#category').on('change', function () {
+        var category = $(this).val();
+        $.ajax({
+          type: 'POST',
+          url: 'load_product.php',
+          data: { category: category },
+          success: function (data) {
+            $('#menu-field').html(data);
+          }
+        });
+      });
+    });
+
+
+    $('.view_prod').click(function () {
+      uni_modal_right('Product', 'view_prod.php?id=' + $(this).attr('data-id'))
+    })
+  </script>
