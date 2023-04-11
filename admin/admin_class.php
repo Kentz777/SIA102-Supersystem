@@ -75,7 +75,7 @@ class Action
 		foreach ($_SESSION as $key => $value) {
 			unset($_SESSION[$key]);
 		}
-		header("location:landing.php");
+		header("location:index.php");
 	}
 	function logout2()
 	{
@@ -83,7 +83,7 @@ class Action
 		foreach ($_SESSION as $key => $value) {
 			unset($_SESSION[$key]);
 		}
-		header("location:../index.php");
+		header("location:../landing.php");
 	}
 
 	function save_user()
