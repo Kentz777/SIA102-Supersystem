@@ -35,7 +35,7 @@ class Action
 	function login2()
 	{
 		extract($_POST);
-		
+
 		$qry = $this->db->query("SELECT * FROM user_info where email = '" . $email . "' and password = '" . md5($password) . "' ");
 		if ($qry->num_rows > 0) {
 			foreach ($qry->fetch_array() as $key => $value) {
@@ -55,7 +55,8 @@ class Action
 		}
 	}
 
-	function qr(){
+	function qr()
+	{
 		extract($_POST);
 		$qry = $this->db->query("SELECT * from booking_details where room_no = '" . $qr . "'");
 		if ($qry->num_rows > 0) {
@@ -272,7 +273,7 @@ class Action
 	{
 		extract($_POST);
 
-		$data = " address = '".$room_no."' ";
+		$data = " address = '" . $room_no . "' ";
 
 		$save = $this->db->query("INSERT INTO orders set " . $data);
 		if ($save) {
@@ -282,7 +283,7 @@ class Action
 
 				$data = " order_id = '$id' ";
 				$data .= ", product_id = '" . $row['product_id'] . "' ";
-				$data .= ", qty = '" . $row['prod_qty'] . "' ";
+				$data .= ", qty = '" . $row['qty'] . "' ";
 				$save2 = $this->db->query("INSERT INTO order_list set " . $data);
 				if ($save2) {
 					$this->db->query("DELETE FROM cart where id= " . $row['id']);
@@ -294,10 +295,27 @@ class Action
 	function confirm_order()
 	{
 		extract($_POST);
-		$save = $this->db->query("UPDATE orders set status = 1 where id= " . $id);
-		if ($save)
+		$save = false;
+		if ($status_value == 0) {
+			// handle status value 0 (Pending)
+			$save = $this->db->query("UPDATE orders set status = 0 where id= " . $id);
+		} else if ($status_value == 1) {
+			// handle status value 1 (Processing)
+			$save = $this->db->query("UPDATE orders set status = 1 where id= " . $id);
+		} else if ($status_value == 2) {
+			// handle status value 2 (Ready to be Claim)
+			$save = $this->db->query("UPDATE orders set status = 2 where id= " . $id);
+		} else if ($status_value == 3) {
+			// handle status value 3 (Claimed)
+			$save = $this->db->query("UPDATE orders set status = 3 where id= " . $id);
+		}
+
+		if ($save) {
 			return 1;
+		}
 	}
+
+
 
 
 

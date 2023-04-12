@@ -266,6 +266,23 @@ ASDASDASD
     align-items: center;
     min-width: 400px;
   }
+
+  .filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .filter select{
+    width:300px;
+    font-size: 25px;
+    border-radius: 90px;
+  }
+
+  .filter select{
+    text-align: center;
+  }
 </style>
 <link href="css/main.css" rel="stylesheet" />
 
@@ -285,7 +302,7 @@ ASDASDASD
 
 </section>
 
-  <div>
+  <div class="filter">
     <select name="" id="category">
       <option value="" disabled>Select category</option>
       <option value="all" selected>All</option>
@@ -294,7 +311,7 @@ ASDASDASD
 
   <div class="topsellerz">
     <h2>
-      <center>Top Sellers
+      <center>MENU
         <hr class="orange-line" />
       </center>
     </h2>
