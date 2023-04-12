@@ -94,7 +94,7 @@
                             $data = "where c.client_ip = '" . $ip . "' ";
                         }
 
-                        $qry = "SELECT *, OL.order_id as num, P.name as pname, OL.qty as qty, O.status as stat, OL.amount as amount from user_cred u
+                        $qry = "SELECT *, OL.order_id as num, P.name as pname, OL.qty as qty, O.status as stat, OL.amount as amount from user_info u
                                 JOIN orders O
                                 JOIN order_list OL ON OL.order_id = O.id
                                 JOIN product_list P ON P.id = OL.product_id ".$data;

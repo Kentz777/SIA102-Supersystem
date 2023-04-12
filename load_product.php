@@ -39,7 +39,7 @@ if (mysqli_num_rows($result) > 0) {
         $html_markup .= "</div>";
     }
 } else {
-    $html_markup = "<p>No products found for this category.</p>";
+    $html_markup = "<p style='color:red; padding-left: 770px;'> No products found for this category.</p>";
 }
 
 echo $html_markup;
