@@ -104,6 +104,8 @@ class Action
 		}
 	}
 
+	
+
 	function signup()
 	{
 		extract($_POST);
@@ -166,6 +168,21 @@ class Action
 			$save = $this->db->query("INSERT INTO category_list set " . $data);
 		} else {
 			$save = $this->db->query("UPDATE category_list set " . $data . " where id=" . $id);
+		}
+		if ($save)
+			return 1;
+	}
+
+	function save_rooms()
+	{
+		$book_id = 0;
+		extract($_POST);
+		$data = " room_no = '$name' ";
+		$data .= ", book_id = $book_id ";
+		if (empty($id)) {
+			$save = $this->db->query("INSERT INTO user_info set " . $data);
+		} else {
+			$save = $this->db->query("UPDATE user_info set " . $data . " where user_id=" . $id);
 		}
 		if ($save)
 			return 1;

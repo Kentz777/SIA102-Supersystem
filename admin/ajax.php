@@ -50,6 +50,11 @@ if($action == "save_category"){
 	if($save)
 		echo $save;
 }
+if($action == "save_rooms"){
+	$save = $crud->save_rooms();
+	if($save)
+		echo $save;
+}
 if($action == "delete_category"){
 	$save = $crud->delete_category();
 	if($save)

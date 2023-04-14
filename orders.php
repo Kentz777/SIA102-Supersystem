@@ -94,10 +94,11 @@
                             $data = "where c.client_ip = '" . $ip . "' ";
                         }
 
-                        $qry = "SELECT *, OL.order_id as num, P.name as pname, OL.qty as qty, O.status as stat, OL.amount as amount from user_info u
-                                JOIN orders O
-                                JOIN order_list OL ON OL.order_id = O.id
-                                JOIN product_list P ON P.id = OL.product_id ".$data;
+                            $qry = "SELECT *, OL.order_id as num, P.name as pname, OL.qty as qty, O.status as stat, OL.amount as amount from user_info u
+                                    JOIN orders O
+                                    JOIN order_list OL ON OL.order_id = O.id
+                                    JOIN product_list P ON P.id = OL.product_id ".$data;
+                            
 
                         $get = $conn->query($qry);
                         while ($row = $get->fetch_assoc()) :
@@ -109,7 +110,17 @@
                                 <td><?php echo $row['num'] ?></td>
                                 <td><?php echo $row['pname'] ?></td>
                                 <td><?php echo $row['qty'] ?></td>
-                                <td><span class="badge badge-success"><?php echo $row['stat'] ?></span></td>
+                                <?php if ($row['status'] == 1) : ?>
+								<td class="text-center"><span class="badge badge-primary">Processing</span></td>
+							<?php elseif ($row['status'] == 2) : ?>
+								<td class="text-center"><span class="badge badge-warning">Ready to be Claim</span></td>
+							<?php elseif ($row['status'] == 3) : ?>
+								<td class="text-center"><span class="badge badge-success">Claimed</span></td>
+							<?php else : ?>
+								<td class="text-center"><span class="badge badge-secondary">Pending</span></td>
+							<?php endif; ?>
+							<td>
+                                <td><span><?php echo $row['stat'] ?></span></td>
                                 <td><?php echo $row['amount'] ?></td>
                                 <!--<td>Today</td>-->
                                 <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
@@ -120,77 +131,7 @@
             </div>
         </div>
 
-        <div class="rounded">
-            <div class="table-responsive table-borderless">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th colspan="7" style="background-color:black; color:white;">Services</th>
-                        </tr>
-                        <tr>
-                            <th class="text-center">
-                            </th>
-                            <th>Order #</th>
-                            <th>Service</th>
-                            <th>status</th>
-                            <th>Total</th>
-                            <th>Date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-body">
-                        <tr class="cell-1">
-                            <td class="text-center">
-
-
-                            </td>
-                            <td>#SO-13487</td>
-                            <td>Gasper Antunes</td>
-                            <td><span class="badge badge-success">Fullfilled</span></td>
-                            <td>$2674.00</td>
-                            <td>Today</td>
-                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                        </tr>
-                        <tr class="cell-1">
-                            <td class="text-center">
-
-
-
-                            </td>
-                            <td>#SO-13453</td>
-                            <td>Aartsen van</td>
-                            <td><span class="badge badge-info">Confirmed</span></td>
-                            <td>$3454.00</td>
-                            <td>Yesterday</td>
-                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                        </tr>
-                        <tr class="cell-1">
-                            <td class="text-center">
-
-
-                            </td>
-                            <td>#SO-13498</td>
-                            <td>Trashes Habard</td>
-                            <td><span class="badge badge-danger">Partially shipped</span></td>
-                            <td>$6274.00</td>
-                            <td>May 12,2020</td>
-                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                        </tr>
-                        <tr class="cell-1">
-                            <td class="text-center">
-
-                            </td>
-                            <td>#SO-16499</td>
-                            <td>Samban Hubart</td>
-                            <td><span class="badge badge-success">Fullfilled</span></td>
-                            <td>$6375.00</td>
-                            <td>May 11,2020</td>
-                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+     
 
     </div>
     </div>

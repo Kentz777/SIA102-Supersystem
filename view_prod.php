@@ -10,7 +10,7 @@ $qry = $conn->query("SELECT * FROM  product_list where id = " . $_GET['id'])->fe
 		<div class="card-body">
 			<h5 class="card-title"><?php echo $qry['name'] ?></h5>
 			<p class="card-text truncate"><?php echo $qry['description'] ?></p>
-			<p class="card-text">Price: $<?php echo $qry['price'] ?></p>
+			<p class="card-text">Price: P<?php echo $qry['price'] ?></p>
 			<div class="form-group">
 			</div>
 			<div class="row">
