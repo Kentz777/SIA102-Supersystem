@@ -6,6 +6,7 @@
 					<tr>
 
 						<th>#</th>
+						<th>Date</th>
 						<th>Room No.</th>
 						<th>Status</th>
 						<th></th>
@@ -20,7 +21,9 @@
 					?>
 						<tr>
 							<td><?php echo $i++ ?></td>
+							<td><?php echo $row['date'] ?></td>
 							<td><?php echo $row['address'] ?></td>
+							
 
 
 							<?php if ($row['status'] == 1) : ?>
