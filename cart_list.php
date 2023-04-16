@@ -18,7 +18,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-8"><b>Card</b></div>
+								<div class="col-md-8"><b>Orders</b></div>
 								<div class="col-md-4 text-right"><b>Total</b></div>
 							</div>
 						</div>
