@@ -14,7 +14,7 @@ foreach ($query as $key => $value) {
 if (isset($_POST['qr'])) {
     $room_no = mysqli_real_escape_string($conn, $_POST['qr']); // Escape user input to prevent SQL injection
 
-    $qry = "SELECT * FROM user_info WHERE room_no = '$room_no'";
+    $qry = "SELECT *,ui.book_id as bookid, ui.room_no as uiroom, bd.user_name as bduser FROM user_info ui join booking_details bd on bd.booking_id = ui.book_id WHERE ui.room_no = '$room_no'";
 
     $result = $conn->query($qry);
 

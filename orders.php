@@ -84,7 +84,7 @@
                     <tbody class="table-body">
                         <?php
                         if (isset($_SESSION['login_user_id'])) {
-                            $data = "where u.user_id = '" . $_SESSION['login_user_id'] . "' ";
+                            $data = "where ui.room_no = '" . $_SESSION['login_uiroom'] . "' ";
                         } else {
                             $ip = isset($_SERVER['HTTP_CLIENT_IP'])
                                 ? $_SERVER['HTTP_CLIENT_IP']
@@ -94,10 +94,11 @@
                             $data = "where c.client_ip = '" . $ip . "' ";
                         }
 
-                            $qry = "SELECT *, OL.order_id as num, P.name as pname, OL.qty as qty, O.status as stat, OL.amount as amount from user_info u
-                                    JOIN orders O
-                                    JOIN order_list OL ON OL.order_id = O.id
-                                    JOIN product_list P ON P.id = OL.product_id ".$data;
+                            $qry = "SELECT ol.order_id as orderid, pl.name as prodname, ol.qty as qty, o.status as stat, ol.amount as amount, ol.date as date FROM user_info ui
+                            join booking_details bd on bd.booking_id = ui.book_id
+                            join orders o on o.booking_id = bd.booking_id
+                            join order_list ol on ol.order_id = o.id
+                            join product_list pl on pl.id = ol.product_id ".$data;
                             
 
                         $get = $conn->query($qry);
@@ -107,23 +108,22 @@
                                 <td class="text-center">
                                 </td>
 
-                                <td><?php echo $row['num'] ?></td>
-                                <td><?php echo $row['pname'] ?></td>
+                                <td><?php echo $row['orderid'] ?></td>
+                                <td><?php echo $row['prodname'] ?></td>
                                 <td><?php echo $row['qty'] ?></td>
-                                <?php if ($row['status'] == 1) : ?>
+                                <?php if ($row['stat'] == 1) : ?>
 								<td class="text-center"><span class="badge badge-primary">Processing</span></td>
-							<?php elseif ($row['status'] == 2) : ?>
+							<?php elseif ($row['stat'] == 2) : ?>
 								<td class="text-center"><span class="badge badge-warning">Ready to be Claim</span></td>
-							<?php elseif ($row['status'] == 3) : ?>
+							<?php elseif ($row['stat'] == 3) : ?>
 								<td class="text-center"><span class="badge badge-success">Claimed</span></td>
 							<?php else : ?>
 								<td class="text-center"><span class="badge badge-secondary">Pending</span></td>
 							<?php endif; ?>
 							<td>
-                                <td><span><?php echo $row['stat'] ?></span></td>
                                 <td><?php echo $row['amount'] ?></td>
+                                <td><?php echo $row['date'] ?></td>
                                 <!--<td>Today</td>-->
-                                <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
