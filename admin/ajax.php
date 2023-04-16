@@ -50,6 +50,12 @@ if($action == "save_category"){
 	if($save)
 		echo $save;
 }
+
+if($action == "save_room_cat"){
+	$save = $crud->save_room_cat();
+	if($save)
+		echo $save;
+}
 if($action == "save_rooms"){
 	$save = $crud->save_rooms();
 	if($save)
@@ -57,6 +63,16 @@ if($action == "save_rooms"){
 }
 if($action == "delete_category"){
 	$save = $crud->delete_category();
+	if($save)
+		echo $save;
+}
+if($action == "delete_rooms_cat"){
+	$save = $crud->delete_rooms_cat();
+	if($save)
+		echo $save;
+}
+if($action == "delete_room"){
+	$save = $crud->delete_room();
 	if($save)
 		echo $save;
 }

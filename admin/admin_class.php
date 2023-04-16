@@ -173,16 +173,27 @@ class Action
 			return 1;
 	}
 
+	function save_room_cat()
+	{
+		extract($_POST);
+		$data = " room_cat = '$name' ";
+		if (empty($id)) {
+			$save = $this->db->query("INSERT INTO room_category set " . $data);
+		} else {
+			$save = $this->db->query("UPDATE room_category set " . $data . " where id=" . $id);
+		}
+		if ($save)
+			return 1;
+	}
+
 	function save_rooms()
 	{
-		$book_id = 0;
 		extract($_POST);
-		$data = " room_no = '$name' ";
-		$data .= ", book_id = $book_id ";
+		$data = " room_name = '$name' ";
 		if (empty($id)) {
-			$save = $this->db->query("INSERT INTO user_info set " . $data);
+			$save = $this->db->query("INSERT INTO room_info set " . $data);
 		} else {
-			$save = $this->db->query("UPDATE user_info set " . $data . " where user_id=" . $id);
+			$save = $this->db->query("UPDATE room_info set " . $data . " where id=" . $id);
 		}
 		if ($save)
 			return 1;
@@ -191,6 +202,22 @@ class Action
 	{
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM category_list where id = " . $id);
+		if ($delete)
+			return 1;
+	}
+
+	function delete_room()
+	{
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM room_info where id = " . $id);
+		if ($delete)
+			return 1;
+	}
+
+	function delete_rooms_cat()
+	{
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM room_category where id = " . $id);
 		if ($delete)
 			return 1;
 	}
@@ -291,16 +318,18 @@ class Action
 		extract($_POST);
 
 		$data = " address = '" . $room_no . "' ";
+		$data .= ", booking_id = '" . $_SESSION['login_bookid'] . "' ";
 
 		$save = $this->db->query("INSERT INTO orders set " . $data);
 		if ($save) {
 			$id = $this->db->insert_id;
-			$qry = $this->db->query("SELECT * FROM cart where user_id =" . $_SESSION['login_user_id']);
+			$qry = $this->db->query("SELECT *, p.price as price FROM cart join product_list p where user_id =" . $_SESSION['login_user_id']);
 			while ($row = $qry->fetch_assoc()) {
 
 				$data = " order_id = '$id' ";
 				$data .= ", product_id = '" . $row['product_id'] . "' ";
 				$data .= ", qty = '" . $row['qty'] . "' ";
+				$data .= ", amount = '" . ($row['price'] * $row['qty']) . "' ";
 				$save2 = $this->db->query("INSERT INTO order_list set " . $data);
 				if ($save2) {
 					$this->db->query("DELETE FROM cart where id= " . $row['id']);

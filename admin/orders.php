@@ -6,7 +6,7 @@
 					<tr>
 
 						<th>#</th>
-						<th>Date</th>
+						<th>Order Date</th>
 						<th>Room No.</th>
 						<th>Status</th>
 						<th></th>
