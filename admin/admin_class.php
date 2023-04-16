@@ -323,7 +323,7 @@ class Action
 		$save = $this->db->query("INSERT INTO orders set " . $data);
 		if ($save) {
 			$id = $this->db->insert_id;
-			$qry = $this->db->query("SELECT *, p.price as price FROM cart join product_list p where user_id =" . $_SESSION['login_user_id']);
+			$qry = $this->db->query("SELECT *,c.id as cid, p.price as price FROM cart c join product_list p where user_id =" . $_SESSION['login_user_id']);
 			while ($row = $qry->fetch_assoc()) {
 
 				$data = " order_id = '$id' ";
@@ -332,7 +332,7 @@ class Action
 				$data .= ", amount = '" . ($row['price'] * $row['qty']) . "' ";
 				$save2 = $this->db->query("INSERT INTO order_list set " . $data);
 				if ($save2) {
-					$this->db->query("DELETE FROM cart where id= " . $row['id']);
+					$this->db->query("DELETE FROM cart where id= " . $row['cid']);
 				}
 			}
 			return 1;
