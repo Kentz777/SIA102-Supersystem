@@ -45,33 +45,87 @@ if (isset($_POST['qr'])) {
         echo 2;
     }
 } else {
-    echo 0;
+    // echo 0;
 }
 ?>
 
 
 <style>
     header.masthead {
-        background: url(assets/img/<?php echo $_SESSION['setting_cover_img'] ?>);
+        background: "url(assets/img/<?php echo $_SESSION['setting_cover_img'] ?>)";
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    .loading-img {
+        animation: loading 1.5s infinite linear;
+        inset: 0;
+        user-select: none;
+    }
+
+    .qr-code-img::before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        top: 100%;
+        bottom: 100%;
+        width: 110%;
+        border-radius: 5px;
+        opacity: 0.75;
+        box-shadow: 0 0 10px 5px blue;
+        left: -5%;
+        margin-inline: auto;
+        background-color: blue;
+        animation: barscanner 1s infinite alternate linear;
+    }
+
+    @keyframes barscanner {
+        from {
+            top: 0%;
+        }
+
+        to {
+            bottom: 0%;
+        }
+    }
+
+    @keyframes loading {
+        from {
+            transform: rotate(0);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
     }
 </style>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <video id="preview" width="100%"></video>
+
+    <div class="container-fluid d-flex justify-content-center py-2 py-lg-3 w-100 h-100" style="background-color: #e8e8e8;">
+        <div class="d-flex flex-column p-3 p-lg-3" style="width: min(35rem, 100%);">
+            <div class="w-100 position-relative" style="height: min(18rem, 50vw);">
+                <img src="assets/img/loading-image.png" alt="loading" class="loading-img position-absolute m-auto" style="width: 2rem; aspect-ratio: 1;">
+                <video id="preview" class="w-100 h-100"></video>
             </div>
-            <div class="col-md-6">
-                <form method="post" class="form-horizontal" id="qr-frm">
-                    <label for="text">SCAN QR CODE</label>
-                    <input type="text" name="qr" id="text" readonly placeholder="Scan QR Code" class="form-control">
-                </form>
+            <h1 class="display-6 fs-4 text-center py-3">SCAN QR CODE HERE</h1>
+
+            <form method="post" class="form-horizontal" id="qr-frm">
+                <input type="hidden" class="form-control" name="qr" id="text" placeholder="Room no. will display here..." readonly />
+            </form>
+
+            <div class="d-flex flex-column flex-grow-1 text-center">
+                <div class="qr-code-img position-relative w-25 m-auto">
+                    <img src="assets/img/qr-code-img.png" alt="qr code image" class="w-100">
+                </div>
+                <h6>Waiting...</h6>
             </div>
         </div>
     </div>
+
+
+
+
     <script>
         let scanner = new Instascan.Scanner({
             video: document.getElementById("preview")

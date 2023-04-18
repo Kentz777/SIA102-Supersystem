@@ -293,7 +293,7 @@ ASDASDASD
 
   <div class="wrap">
     <div class="search">
-      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+      <input type="text" id="search" class="searchTerm" placeholder="What are you looking for?">
       <button type="submit" class="searchButton" id="searchButton">
         <i class="fa fa-search"></i>
       </button>
@@ -377,6 +377,7 @@ ASDASDASD
       });
     });
 
+    
 
     $('.view_prod').click(function () {
       uni_modal_right('Product', 'view_prod.php?id=' + $(this).attr('data-id'))
