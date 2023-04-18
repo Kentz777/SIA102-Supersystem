@@ -16,7 +16,7 @@
                 <form action="" id="checkout-frm">
                     <h4>Confirm Delivery Information</h4>
                     <div class="form-group">
-                        <label for="" class="control-label">Room No.</label>
+                        <label for="" class="control-label">Guest Name</label>
                         <input type="text" name="user" readonly required="" class="form-control" value="<?php echo $_SESSION['login_bduser'] ?>">
                     </div>  
                     <div class="form-group">

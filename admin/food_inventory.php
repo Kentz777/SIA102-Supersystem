@@ -17,15 +17,15 @@
 							<tbody>
 								<?php
 								$i = 1;
-								$supply = $conn->query("SELECT * FROM product_list order by name asc");
+								$supply = $conn->query("SELECT *, pl.name as name, pl.id as product_id, pi.prod_qty as qty FROM product_list pl join product_inventory pi on pi.prod_id = pl.id order by name asc");
 			
 								while ($row = $supply->fetch_assoc()) :
-									$sup_arr[$row['id']] = $row['name'];
+									$sup_arr[$row['product_id']] = $row['name'];
 								?>
 									<tr>
 										<td class="text-center"><?php echo $i++ ?></td>
 										<td class=""><?php echo $row['name'] ?></td>
-									<td class="text-right"><?php echo $row['prod_qty'] ?></td>
+									<td class="text-right"><?php echo $row['qty'] ?></td>
 						
 									</tr>
 								<?php endwhile; ?>

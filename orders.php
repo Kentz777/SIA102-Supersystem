@@ -76,9 +76,9 @@
                             <th>Item</th>
                             <th>Qty</th>
                             <th>status</th>
+                            <th></th>
                             <th>Total</th>
                             <th>Date</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody class="table-body">
@@ -106,6 +106,7 @@
                         ?>
                             <tr class="cell-1">
                                 <td class="text-center">
+
                                 </td>
 
                                 <td><?php echo $row['orderid'] ?></td>
@@ -123,6 +124,7 @@
 							<td>
                                 <td><?php echo $row['amount'] ?></td>
                                 <td><?php echo $row['date'] ?></td>
+                            
                                 <!--<td>Today</td>-->
                             </tr>
                         <?php endwhile; ?>

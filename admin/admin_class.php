@@ -104,7 +104,7 @@ class Action
 		}
 	}
 
-	
+
 
 	function signup()
 	{
@@ -320,24 +320,39 @@ class Action
 		$data = " address = '" . $room_no . "' ";
 		$data .= ", booking_id = '" . $_SESSION['login_bookid'] . "' ";
 
-		$save = $this->db->query("INSERT INTO orders set " . $data);
+		$save = $this->db->query("INSERT INTO orders SET " . $data);
 		if ($save) {
-			$id = $this->db->insert_id;
-			$qry = $this->db->query("SELECT *,c.id as cid, p.price as price FROM cart c join product_list p where user_id =" . $_SESSION['login_user_id']);
-			while ($row = $qry->fetch_assoc()) {
+			$order_id = $this->db->insert_id;
 
-				$data = " order_id = '$id' ";
-				$data .= ", product_id = '" . $row['product_id'] . "' ";
-				$data .= ", qty = '" . $row['qty'] . "' ";
-				$data .= ", amount = '" . ($row['price'] * $row['qty']) . "' ";
-				$save2 = $this->db->query("INSERT INTO order_list set " . $data);
-				if ($save2) {
-					$this->db->query("DELETE FROM cart where id= " . $row['cid']);
+			$qry = $this->db->query("SELECT *, c.id AS cid, p.price AS price, c.product_id AS cprodid 
+                                 FROM cart c 
+                                 JOIN product_list p 
+                                 ON c.product_id = p.id
+                                 WHERE user_id = " . $_SESSION['login_user_id'] . "
+                                 ORDER BY c.product_id");
+
+			$stop_product = 0;
+			$stop_price = 0;
+
+			while ($row = $qry->fetch_assoc()) {
+				if ($row['cprodid'] != $stop_product || $row['price'] != $stop_price) {
+					$data = " order_id = '$order_id' ";
+					$data .= ", product_id = '" . $row['product_id'] . "' ";
+					$data .= ", qty = '" . $row['qty'] . "' ";
+					$data .= ", amount = '" . ($row['price'] * $row['qty']) . "' ";
+					$save2 = $this->db->query("INSERT INTO order_list SET " . $data);
+					if ($save2) {
+						$this->db->query("DELETE FROM cart WHERE id = " . $row['cid']);
+						$this->db->query("UPDATE product_inventory SET prod_qty = prod_qty - " . $row['qty']);
+					}
+					$stop_product = $row['cprodid'];
+					$stop_price = $row['price'];
 				}
 			}
 			return 1;
 		}
 	}
+
 	function confirm_order()
 	{
 		extract($_POST);
