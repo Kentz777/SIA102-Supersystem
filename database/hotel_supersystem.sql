@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2023 at 06:42 PM
+-- Generation Time: Apr 24, 2023 at 09:42 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -103,7 +103,7 @@ INSERT INTO `booking_details` (`sr_no`, `booking_id`, `room_name`, `price`, `tot
 (5, 5, 'Suite Room', 1000, 24000, '', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
 (6, 6, 'Suite Room', 1000, 24000, '', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
 (7, 7, 'Standard Room', 200, 14400, '', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
-(8, 8, 'Suite Room', 1000, 48000, 'room2', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(8, 8, 'Suite Room', 1000, 48000, 'room3', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
 (9, 9, 'Suite Room', 1000, 48000, NULL, 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
 (10, 10, 'Standard Room', 200, 4800, 'room2', 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
 (11, 11, 'Deluxe Room', 400, 14400, NULL, 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
@@ -478,8 +478,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_id`, `user_id`, `booking_id`, `address`, `status`, `date`) VALUES
-(21, 'order_6440b792980e65131', 1, 17, 'room3', 1, '2023-04-21 21:01:56'),
-(22, 'order_64428cdf50b739379', 1, 17, 'room3', 0, '2023-04-21 21:17:19');
+(25, 'order_6446bcabbc22d8889', 1, 10, 'room2', 3, '2023-04-25 02:35:22'),
+(27, 'order_6446db7b90b1c2697', 1, 10, 'room2', 3, '2023-04-25 03:42:04');
 
 -- --------------------------------------------------------
 
@@ -500,9 +500,9 @@ CREATE TABLE `order_list` (
 --
 
 INSERT INTO `order_list` (`id`, `order_id`, `product_id`, `qty`, `amount`) VALUES
-(23, 'order_6440b792980e65131', 3, 2, 466),
-(24, 'order_6440b792980e65131', 4, 2, 666),
-(25, 'order_64428cdf50b739379', 6, 5, 1165);
+(27, 'order_6446bcabbc22d8889', 4, 4, 1332),
+(28, 'order_6446cb55a44192879', 3, 8, 1864),
+(29, 'order_6446db7b90b1c2697', 4, 1, 333);
 
 -- --------------------------------------------------------
 
@@ -521,8 +521,8 @@ CREATE TABLE `product_inventory` (
 --
 
 INSERT INTO `product_inventory` (`id`, `prod_id`, `prod_qty`) VALUES
-(1, 1, -30),
-(2, 6, 13);
+(1, 1, -48),
+(2, 6, -5);
 
 -- --------------------------------------------------------
 
@@ -826,8 +826,6 @@ INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phonenum`, `pincode`
 
 CREATE TABLE `user_info` (
   `r_id` int(10) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `booking_id` int(11) NOT NULL,
   `room_no` varchar(250) NOT NULL,
   `status` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -836,13 +834,13 @@ CREATE TABLE `user_info` (
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`r_id`, `user_id`, `booking_id`, `room_no`, `status`) VALUES
-(1, 0, 10, 'room2', ''),
-(2, 0, 0, 'room5', ''),
-(3, 1, 17, 'room3', ''),
-(4, 1, 13, 'room6', ''),
-(5, 0, 12, 'room7', ''),
-(6, 0, 0, 'room8', '');
+INSERT INTO `user_info` (`r_id`, `room_no`, `status`) VALUES
+(1, 'room2', ''),
+(2, 'room5', ''),
+(3, 'room3', ''),
+(4, 'room6', ''),
+(5, 'room7', ''),
+(6, 'room8', '');
 
 -- --------------------------------------------------------
 
@@ -1144,7 +1142,7 @@ ALTER TABLE `carousel`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `category_list`
@@ -1222,13 +1220,13 @@ ALTER TABLE `laundry_list`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `product_inventory`

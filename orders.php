@@ -84,7 +84,7 @@
                     <tbody class="table-body">
                         <?php
                         if (isset($_SESSION['login_user_id'])) {
-                            $data = "where ui.room_no = '" . $_SESSION['login_uiroom'] . "' ";
+                            $data = "where bd.room_no = '" . $_SESSION['login_room_no'] . "' ";
                         } else {
                             $ip = isset($_SERVER['HTTP_CLIENT_IP'])
                                 ? $_SERVER['HTTP_CLIENT_IP']
@@ -94,9 +94,15 @@
                             $data = "where c.client_ip = '" . $ip . "' ";
                         }
 
-                            $qry = "SELECT ol.order_id as orderid, pl.name as prodname, ol.qty as qty, o.status as stat, ol.amount as amount, o.date as date FROM user_info ui
-                            join booking_order bd on bd.user_id = ui.user_id
-                            join orders o on o.user_id = bd.user_id
+                            // $qry = "SELECT ol.order_id as orderid, pl.name as prodname, ol.qty as qty, o.status as stat, ol.amount as amount, o.date as date FROM user_info ui
+                            // join booking_order bd on bd.user_id = ui.user_id
+                            // join orders o on o.user_id = bd.user_id
+                            // join order_list ol on ol.order_id = o.order_id
+                            // join product_list pl on pl.id = ol.product_id ".$data;
+
+                            $qry = "SELECT ol.order_id as orderid, pl.name as prodname, ol.qty as qty, o.status as stat, ol.amount as amount, o.date as date FROM booking_details bd
+                            join booking_order bo on bd.booking_id = bo.booking_id
+                            join orders o on o.user_id = bo.user_id
                             join order_list ol on ol.order_id = o.order_id
                             join product_list pl on pl.id = ol.product_id ".$data;
                             
