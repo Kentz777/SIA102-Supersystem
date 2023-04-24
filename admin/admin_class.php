@@ -189,11 +189,11 @@ class Action
 	function save_rooms()
 	{
 		extract($_POST);
-		$data = " room_name = '$name' ";
+		$data = " room_no = '$name' ";
 		if (empty($id)) {
-			$save = $this->db->query("INSERT INTO room_info set " . $data);
+			$save = $this->db->query("INSERT INTO user_info set " . $data);
 		} else {
-			$save = $this->db->query("UPDATE room_info set " . $data . " where id=" . $id);
+			$save = $this->db->query("UPDATE user_info set " . $data . " where user_id=" . $id);
 		}
 		if ($save)
 			return 1;
@@ -316,14 +316,14 @@ class Action
 	function save_order()
 	{
 		extract($_POST);
-
+		$order_id = uniqid('order_') . mt_rand(1000,9999);
 		$data = " address = '" . $room_no . "' ";
+		$data .= ", user_id = '" . $_SESSION['login_user_id'] . "' ";
+		$data .= ", order_id = '$order_id' ";
 		$data .= ", booking_id = '" . $_SESSION['login_bookid'] . "' ";
 
 		$save = $this->db->query("INSERT INTO orders SET " . $data);
 		if ($save) {
-			$order_id = $this->db->insert_id;
-
 			$qry = $this->db->query("SELECT *, c.id AS cid, p.price AS price, c.product_id AS cprodid 
                                  FROM cart c 
                                  JOIN product_list p 
