@@ -94,10 +94,10 @@
                             $data = "where c.client_ip = '" . $ip . "' ";
                         }
 
-                            $qry = "SELECT ol.order_id as orderid, pl.name as prodname, ol.qty as qty, o.status as stat, ol.amount as amount, ol.date as date FROM user_info ui
-                            join booking_details bd on bd.booking_id = ui.book_id
-                            join orders o on o.booking_id = bd.booking_id
-                            join order_list ol on ol.order_id = o.id
+                            $qry = "SELECT ol.order_id as orderid, pl.name as prodname, ol.qty as qty, o.status as stat, ol.amount as amount, o.date as date FROM user_info ui
+                            join booking_order bd on bd.user_id = ui.user_id
+                            join orders o on o.user_id = bd.user_id
+                            join order_list ol on ol.order_id = o.order_id
                             join product_list pl on pl.id = ol.product_id ".$data;
                             
 

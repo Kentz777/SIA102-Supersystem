@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2023 at 11:05 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Apr 24, 2023 at 06:42 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,6 +25,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `activities`
+--
+
+CREATE TABLE `activities` (
+  `id` int(11) NOT NULL,
+  `date_time` varchar(255) NOT NULL,
+  `information` varchar(255) NOT NULL,
+  `duration` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin_cred`
 --
 
@@ -31,7 +45,7 @@ CREATE TABLE `admin_cred` (
   `sr_no` int(11) NOT NULL,
   `admin_name` varchar(150) NOT NULL,
   `admin_pass` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin_cred`
@@ -39,6 +53,27 @@ CREATE TABLE `admin_cred` (
 
 INSERT INTO `admin_cred` (`sr_no`, `admin_name`, `admin_pass`) VALUES
 (1, 'admin', 'admin123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billing_admin`
+--
+
+CREATE TABLE `billing_admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `admin_name` varchar(255) NOT NULL,
+  `pass` varchar(128) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `billing_admin`
+--
+
+INSERT INTO `billing_admin` (`id`, `username`, `admin_name`, `pass`, `status`) VALUES
+(2, 'admin', 'Admin', 'admin', 'Inactive');
 
 -- --------------------------------------------------------
 
@@ -56,34 +91,28 @@ CREATE TABLE `booking_details` (
   `user_name` varchar(50) NOT NULL,
   `phonenum` varchar(50) NOT NULL,
   `address` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booking_details`
 --
 
 INSERT INTO `booking_details` (`sr_no`, `booking_id`, `room_name`, `price`, `total_pay`, `room_no`, `user_name`, `phonenum`, `address`) VALUES
-(1, 1, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(2, 2, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(3, 3, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(4, 4, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(5, 5, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(6, 6, 'Deluxe Room', 1000, 2000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(7, 7, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(8, 8, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(9, 9, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(10, 10, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(11, 11, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(12, 12, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(13, 13, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(14, 14, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(15, 15, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(16, 16, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(17, 17, 'Deluxe Room', 1000, 1000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(18, 18, 'Deluxe Room', 1000, 1000, '0', 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(19, 19, 'Deluxe Room', 1000, 4000, 'a5', 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(20, 20, 'Deluxe Room', 1000, 11000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2'),
-(21, 21, 'Deluxe Room', 1000, 28000, NULL, 'Jheremie Magat', '09279174628', '242 Mapayapa st. Freedm Park 2');
+(3, 3, 'Suite Room', 1000, 12000, '', 'Jheremie O Magat', '09279174623', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(4, 4, 'Deluxe Room', 400, 4800, NULL, 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(5, 5, 'Suite Room', 1000, 24000, '', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(6, 6, 'Suite Room', 1000, 24000, '', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(7, 7, 'Standard Room', 200, 14400, '', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(8, 8, 'Suite Room', 1000, 48000, 'room2', 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(9, 9, 'Suite Room', 1000, 48000, NULL, 'Jheremie O Magat', '09279174626', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(10, 10, 'Standard Room', 200, 4800, 'room2', 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(11, 11, 'Deluxe Room', 400, 14400, NULL, 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(12, 12, 'Deluxe Room', 400, 14400, '', 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(13, 13, 'Deluxe Room', 400, 24000, 'room6', 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(14, 14, 'Superior Room', 600, 7200, NULL, 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(15, 15, 'Superior Room', 600, 7200, NULL, 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(16, 16, 'Superior Room', 600, 14400, NULL, 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC'),
+(17, 17, 'Deluxe Room', 400, 9600, 'room3', 'Jheremie O Magat', '09279174621', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC');
 
 -- --------------------------------------------------------
 
@@ -95,45 +124,63 @@ CREATE TABLE `booking_order` (
   `booking_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
-  `check_in` date NOT NULL,
-  `check_out` date NOT NULL,
-  `arrival` int(11) NOT NULL DEFAULT 0,
-  `refund` int(11) DEFAULT NULL,
-  `booking_status` varchar(100) NOT NULL DEFAULT 'reserved',
+  `check_in` datetime NOT NULL,
+  `check_out` datetime NOT NULL,
+  `arrival` int(11) NOT NULL DEFAULT '0',
+  `cancel` int(11) DEFAULT NULL,
+  `booking_status` varchar(100) NOT NULL DEFAULT 'pending',
   `order_id` varchar(200) NOT NULL,
   `trans_id` varchar(200) DEFAULT NULL,
   `trans_amt` int(11) NOT NULL,
   `trans_status` varchar(100) NOT NULL DEFAULT 'pending',
   `trans_resp_msg` varchar(200) DEFAULT NULL,
-  `datentime` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `rate_review` int(11) DEFAULT NULL,
+  `datentime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `booking_state` varchar(128) NOT NULL,
+  `prev_booking_state` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `booking_order`
 --
 
-INSERT INTO `booking_order` (`booking_id`, `user_id`, `room_id`, `check_in`, `check_out`, `arrival`, `refund`, `booking_status`, `order_id`, `trans_id`, `trans_amt`, `trans_status`, `trans_resp_msg`, `datentime`) VALUES
-(1, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_254344411', NULL, 0, 'pending', NULL, '2023-03-31 17:05:20'),
-(2, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_257419962', NULL, 0, 'pending', NULL, '2023-03-31 17:34:53'),
-(3, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_253710491', NULL, 0, 'pending', NULL, '2023-03-31 17:36:42'),
-(4, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_255996665', NULL, 0, 'pending', NULL, '2023-03-31 20:50:41'),
-(5, 25, 13, '2023-04-01', '2023-04-02', 0, NULL, 'pending', 'ORD_251266911', NULL, 0, 'pending', NULL, '2023-03-31 20:56:46'),
-(6, 25, 13, '2023-04-01', '2023-04-03', 0, NULL, 'pending', 'ORD_254075504', NULL, 0, 'pending', NULL, '2023-03-31 20:56:57'),
-(7, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_251398489', NULL, 0, 'pending', NULL, '2023-03-31 21:00:22'),
-(8, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_252697607', NULL, 0, 'pending', NULL, '2023-03-31 21:04:11'),
-(9, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_258964539', NULL, 0, 'pending', NULL, '2023-03-31 21:31:57'),
-(10, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_25659841', NULL, 0, 'pending', NULL, '2023-03-31 21:35:21'),
-(11, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_253636034', NULL, 0, 'pending', NULL, '2023-03-31 21:40:20'),
-(12, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_251078919', NULL, 0, 'pending', NULL, '2023-03-31 22:00:35'),
-(13, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_2529978', NULL, 0, 'pending', NULL, '2023-03-31 22:01:06'),
-(14, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_2515992', NULL, 0, 'pending', NULL, '2023-03-31 22:01:07'),
-(15, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_254539353', NULL, 0, 'pending', NULL, '2023-03-31 22:01:09'),
-(16, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_253073741', NULL, 0, 'pending', NULL, '2023-03-31 22:01:16'),
-(17, 25, 13, '2023-03-31', '2023-04-01', 0, NULL, 'pending', 'ORD_25268875', NULL, 1000, 'pending', NULL, '2023-03-31 22:01:59'),
-(18, 25, 13, '2023-04-01', '2023-04-02', 0, 0, 'cancelled', 'ORD_258265377', NULL, 1000, 'pending', NULL, '2023-04-01 12:16:34'),
-(19, 25, 13, '2023-04-02', '2023-04-06', 1, NULL, 'reserved', 'ORD_253288388', NULL, 1000, 'pending', NULL, '2023-04-01 12:23:31'),
-(20, 25, 13, '2023-04-02', '2023-04-13', 0, 0, 'cancelled', 'ORD_255481860', NULL, 11000, 'pending', NULL, '2023-04-01 12:24:33'),
-(21, 25, 13, '2023-04-01', '2023-04-29', 0, NULL, 'cancelled', 'ORD_255888148', NULL, 28000, 'pending', NULL, '2023-04-01 17:06:34');
+INSERT INTO `booking_order` (`booking_id`, `user_id`, `room_id`, `check_in`, `check_out`, `arrival`, `cancel`, `booking_status`, `order_id`, `trans_id`, `trans_amt`, `trans_status`, `trans_resp_msg`, `rate_review`, `datentime`, `booking_state`, `prev_booking_state`) VALUES
+(3, 3, 8, '2023-04-20 04:16:00', '2023-04-20 16:16:00', 1, NULL, 'reserved', 'ORD_36592672', NULL, 12000, 'pending', NULL, 0, '2023-04-20 04:16:31', 'ongoing', 'ongoing'),
+(4, 4, 4, '2023-04-20 04:44:00', '2023-04-20 16:44:00', 0, 1, 'cancelled', 'ORD_46526942', NULL, 4800, 'pending', NULL, NULL, '2023-04-20 04:44:56', 'ongoing', 'ongoing'),
+(5, 4, 8, '2023-04-21 05:47:00', '2023-04-22 05:47:00', 1, NULL, 'reserved', 'ORD_4895774', NULL, 24000, 'pending', NULL, 0, '2023-04-20 05:47:56', 'ongoing', ''),
+(6, 4, 8, '2023-04-29 07:58:00', '2023-04-30 07:58:00', 1, NULL, 'reserved', 'ORD_41742172', NULL, 24000, 'pending', NULL, 0, '2023-04-20 07:58:39', 'ongoing', ''),
+(7, 4, 1, '2023-04-27 08:02:00', '2023-04-30 08:02:00', 1, NULL, 'reserved', 'ORD_47073183', NULL, 14400, 'pending', NULL, 0, '2023-04-20 08:02:19', 'ongoing', ''),
+(8, 4, 8, '2023-05-01 08:09:00', '2023-05-03 08:09:00', 1, NULL, 'reserved', 'ORD_49912356', NULL, 48000, 'pending', NULL, 0, '2023-04-20 08:10:05', 'ongoing', ''),
+(9, 4, 8, '2023-05-01 08:09:00', '2023-05-03 08:09:00', 0, NULL, 'pending', 'ORD_47965590', NULL, 48000, 'pending', NULL, NULL, '2023-04-20 08:10:08', 'ongoing', ''),
+(10, 1, 1, '2023-05-05 10:46:00', '2023-05-06 10:47:00', 1, NULL, 'reserved', 'ORD_14737929', NULL, 4800, 'pending', NULL, 0, '2023-04-20 10:47:24', 'ongoing', ''),
+(11, 1, 4, '2023-04-20 10:57:00', '2023-04-21 22:57:00', 0, NULL, 'pending', 'ORD_13363060', NULL, 14400, 'pending', NULL, NULL, '2023-04-20 10:57:45', 'ongoing', 'ongoing'),
+(12, 1, 4, '2023-04-20 10:57:00', '2023-04-21 22:57:00', 0, 1, 'cancelled', 'ORD_15671354', NULL, 14400, 'pending', NULL, 0, '2023-04-20 10:57:53', 'ongoing', ''),
+(13, 1, 4, '2023-05-03 11:03:00', '2023-05-05 23:03:00', 1, NULL, 'reserved', 'ORD_19126104', NULL, 24000, 'pending', NULL, 0, '2023-04-20 11:03:41', 'ongoing', ''),
+(14, 1, 6, '2023-04-20 11:11:00', '2023-04-20 23:11:00', 0, 1, 'cancelled', 'ORD_14992706', NULL, 7200, 'pending', NULL, NULL, '2023-04-20 11:11:56', 'ongoing', ''),
+(15, 1, 6, '2023-04-20 11:11:00', '2023-04-20 23:11:00', 0, 1, 'cancelled', 'ORD_14282320', NULL, 7200, 'pending', NULL, NULL, '2023-04-20 11:12:03', 'ongoing', ''),
+(16, 1, 6, '2023-04-20 11:14:00', '2023-04-21 11:14:00', 0, 1, 'cancelled', 'ORD_19215934', NULL, 14400, 'pending', NULL, NULL, '2023-04-20 11:14:56', 'ongoing', ''),
+(17, 1, 4, '2023-04-20 11:51:00', '2023-04-21 11:51:00', 1, NULL, 'reserved', 'ORD_19802060', NULL, 9600, 'pending', NULL, 0, '2023-04-20 11:51:56', 'paid', 'ongoing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `business_detail`
+--
+
+CREATE TABLE `business_detail` (
+  `id` int(11) NOT NULL,
+  `business_name` varchar(255) NOT NULL,
+  `business_address` varchar(255) NOT NULL,
+  `business_contact` varchar(255) NOT NULL,
+  `business_email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `business_detail`
+--
+
+INSERT INTO `business_detail` (`id`, `business_name`, `business_address`, `business_contact`, `business_email`) VALUES
+(1, 'Novastar', 'Quirino Highway Patrol Group', '09296039363', 'justemailmefuck!@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -144,16 +191,14 @@ INSERT INTO `booking_order` (`booking_id`, `user_id`, `room_id`, `check_in`, `ch
 CREATE TABLE `carousel` (
   `sr_no` int(11) NOT NULL,
   `image` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `carousel`
 --
 
 INSERT INTO `carousel` (`sr_no`, `image`) VALUES
-(25, 'IMG_54183.png'),
-(26, 'IMG_25068.png'),
-(27, 'IMG_41838.png');
+(1, 'IMG_68350.png');
 
 -- --------------------------------------------------------
 
@@ -168,15 +213,7 @@ CREATE TABLE `cart` (
   `product_id` int(30) NOT NULL,
   `qty` int(30) NOT NULL,
   `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `client_ip`, `user_id`, `product_id`, `qty`, `amount`) VALUES
-(1, '', 4, 20, 1, 0),
-(3, '', 4, 0, 1, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -187,18 +224,40 @@ INSERT INTO `cart` (`id`, `client_ip`, `user_id`, `product_id`, `qty`, `amount`)
 CREATE TABLE `category_list` (
   `id` int(30) NOT NULL,
   `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category_list`
 --
 
 INSERT INTO `category_list` (`id`, `name`) VALUES
-(12, 'Beverages'),
-(13, 'Desserts'),
-(14, 'Soup'),
-(16, 'Essentials'),
-(17, 'Appetizers');
+(1, 'Burgers'),
+(2, 'Fried'),
+(3, 'Soups'),
+(4, 'Barger');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chats`
+--
+
+CREATE TABLE `chats` (
+  `id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `msg` text NOT NULL,
+  `datesent` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `chats`
+--
+
+INSERT INTO `chats` (`id`, `admin_id`, `msg`, `datesent`) VALUES
+(1, 2, 'hello bro', '2023-04-20 10:41:38'),
+(2, 2, 'how are you ', '2023-04-20 10:41:41'),
+(3, 2, 'my brother nigga', '2023-04-20 10:41:45'),
+(4, 2, 'hi my malbs', '2023-04-20 12:02:11');
 
 -- --------------------------------------------------------
 
@@ -217,14 +276,22 @@ CREATE TABLE `contact_details` (
   `insta` varchar(30) NOT NULL,
   `tw` varchar(30) NOT NULL,
   `iframe` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `contact_details`
+-- Table structure for table `customers`
 --
 
-INSERT INTO `contact_details` (`sr_no`, `address`, `gmap`, `pn1`, `pn2`, `email`, `fb`, `insta`, `tw`, `iframe`) VALUES
-(1, 'Novaliches Bayans, Novaliches Quezon City', 'httpss://goo.gl/maps/oWYDsUh1zYEbEFjd7', 63123421111111, 631234222222, 'hotelmokko@gmail.com', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://twitter.com/', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15435.442482009095!2d121.037608!3d14.720470999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b0fc3c2ea051:0xe53b12893e44650d!2sNovaliches Proper, Novaliches, Quezon City, Metro Manila!5e0!3m2!1sen!2sph!4v1676733784633!5m2!1sen!');
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `contact_no` varchar(128) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -237,15 +304,21 @@ CREATE TABLE `facilities` (
   `icon` varchar(100) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `facilities`
 --
 
 INSERT INTO `facilities` (`id`, `icon`, `name`, `description`) VALUES
-(6, 'IMG_60567.svg', 'WiFi', 'Fiber Internet'),
-(7, 'IMG_46330.svg', 'Heater', 'Heater');
+(5, 'IMG_39894.svg', 'WiFi', 'Free WiFi'),
+(6, 'IMG_85801.svg', 'Massage', 'Massage Service'),
+(7, 'IMG_19575.svg', 'Television 27\" LED TV', '27&quot; LED TV'),
+(8, 'IMG_54722.svg', 'Heater', ''),
+(12, 'IMG_39045.svg', 'Television 24&quot; LED TV', '24&quot; LED TV'),
+(13, 'IMG_21972.svg', 'Television 32&quot; LED TV', '32&quot; LED TV'),
+(14, 'IMG_64431.svg', 'Television 45&quot; LED TV', '45&quot; LED TV'),
+(15, 'IMG_53618.svg', 'Television 45&quot; LED TV', '45&quot; LED TV');
 
 -- --------------------------------------------------------
 
@@ -256,16 +329,22 @@ INSERT INTO `facilities` (`id`, `icon`, `name`, `description`) VALUES
 CREATE TABLE `features` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `features`
 --
 
 INSERT INTO `features` (`id`, `name`) VALUES
-(8, 'Bedroom'),
-(9, 'Kitchen'),
-(10, 'Bathroom');
+(7, 'Bar &amp; Restaurants at the Roof deck'),
+(8, 'Safety Deposit box'),
+(9, 'Hot &amp; Cold bath'),
+(10, 'Hair Dryer'),
+(11, 'Free parking slots'),
+(12, 'Complimentary Breakfast'),
+(13, 'Kids Playground'),
+(14, 'Restaurants at the Roof deck'),
+(15, 'Private Swimming pool');
 
 -- --------------------------------------------------------
 
@@ -278,19 +357,59 @@ CREATE TABLE `inventory` (
   `supply_id` int(30) NOT NULL,
   `qty` int(30) NOT NULL,
   `stock_type` tinyint(1) NOT NULL COMMENT '1= in , 2 = used',
-  `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `inventory`
+-- Table structure for table `invoices_draft`
 --
 
-INSERT INTO `inventory` (`id`, `supply_id`, `qty`, `stock_type`, `date_created`) VALUES
-(1, 1, 20, 1, '2020-09-23 14:08:04'),
-(2, 2, 13, 0, '2020-09-23 14:08:14'),
-(5, 3, 2333, 1, '2023-03-25 22:05:49'),
-(7, 5, 200, 0, '2023-03-29 17:42:19'),
-(15, 3, 1, 0, '2023-03-31 21:20:23');
+CREATE TABLE `invoices_draft` (
+  `id` int(11) NOT NULL,
+  `invoiceno` int(11) NOT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `customer_address` varchar(255) NOT NULL,
+  `customer_no` varchar(255) NOT NULL,
+  `customer_email` varchar(255) NOT NULL,
+  `invoice_date` date DEFAULT NULL,
+  `payment_due` date DEFAULT NULL,
+  `date_created` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `invoices_draft`
+--
+
+INSERT INTO `invoices_draft` (`id`, `invoiceno`, `customer_name`, `customer_address`, `customer_no`, `customer_email`, `invoice_date`, `payment_due`, `date_created`) VALUES
+(1, 10683042, 'Rodel Malupet', 'airaifhaoh', '09296039363', 'rodel@gmail.com', '2023-04-18', '2023-04-12', '2023-04-18'),
+(2, 38024484, 'Kent Ortego', 'commonwealth', '09296039363', 'kent@gmail.com', '2023-04-20', '2023-04-21', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items_draft`
+--
+
+CREATE TABLE `items_draft` (
+  `id` int(11) NOT NULL,
+  `invoice_id` int(11) NOT NULL,
+  `item_name` varchar(128) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price_per_unit` int(11) NOT NULL,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `items_draft`
+--
+
+INSERT INTO `items_draft` (`id`, `invoice_id`, `item_name`, `quantity`, `price_per_unit`, `total`) VALUES
+(1, 1, 'Item1', 1, 1, 1),
+(2, 1, 'Item2', 2, 2, 4),
+(3, 2, 'Deluxe', 1, 400, 400),
+(4, 2, 'Item1', 5, 20, 100);
 
 -- --------------------------------------------------------
 
@@ -302,17 +421,7 @@ CREATE TABLE `laundry_categories` (
   `id` int(30) NOT NULL,
   `name` text NOT NULL,
   `price` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `laundry_categories`
---
-
-INSERT INTO `laundry_categories` (`id`, `name`, `price`) VALUES
-(1, 'Bed Sheets', 30),
-(3, 'Clothes', 25),
-(4, 'Undergarments', 20),
-(6, 'sample', 290);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -327,14 +436,7 @@ CREATE TABLE `laundry_items` (
   `laundry_id` int(30) NOT NULL,
   `unit_price` double NOT NULL,
   `amount` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `laundry_items`
---
-
-INSERT INTO `laundry_items` (`id`, `laundry_category_id`, `weight`, `laundry_id`, `unit_price`, `amount`) VALUES
-(13, 4, 3, 13, 20, 60);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -345,28 +447,15 @@ INSERT INTO `laundry_items` (`id`, `laundry_category_id`, `weight`, `laundry_id`
 CREATE TABLE `laundry_list` (
   `id` int(30) NOT NULL,
   `customer_name` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=Pending, 1 = ongoing,2= ready,3= claimed',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=Pending, 1 = ongoing,2= ready,3= claimed',
   `queue` int(30) NOT NULL,
   `total_amount` double NOT NULL,
-  `pay_status` tinyint(1) DEFAULT 0,
+  `pay_status` tinyint(1) DEFAULT '0',
   `amount_tendered` double NOT NULL,
   `amount_change` double NOT NULL,
   `remarks` text NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `laundry_list`
---
-
-INSERT INTO `laundry_list` (`id`, `customer_name`, `status`, `queue`, `total_amount`, `pay_status`, `amount_tendered`, `amount_change`, `remarks`, `date_created`) VALUES
-(6, 'Kent', 3, 2, 0, 0, 0, -775, 'dasdassad', '2023-03-14 14:40:06'),
-(7, 'Mark', 2, 3, 100, 1, 700, 600, 'asdsadsad', '2023-03-14 18:01:49'),
-(8, 'Margh', 2, 4, 150, 0, 0, -150, 'sample remarks', '2023-03-14 19:36:51'),
-(10, 'Kurt', 2, 5, 80, 0, 0, -80, 'sample', '2023-03-15 02:56:55'),
-(11, 'Mark', 0, 6, 400, 0, 0, -400, 'sdsadsadsads', '2023-03-23 14:01:55'),
-(12, 'Kent', 2, 7, 1160, 1, 2000, 840, 'sdsadsad', '2023-03-24 17:29:26'),
-(13, 'Kent', 3, 8, 60, 1, 500, 440, 'sadasdsad', '2023-03-25 21:14:04');
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -376,9 +465,21 @@ INSERT INTO `laundry_list` (`id`, `customer_name`, `status`, `queue`, `total_amo
 
 CREATE TABLE `orders` (
   `id` int(30) NOT NULL,
+  `order_id` varchar(150) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `booking_id` int(30) NOT NULL,
   `address` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_id`, `user_id`, `booking_id`, `address`, `status`, `date`) VALUES
+(21, 'order_6440b792980e65131', 1, 17, 'room3', 1, '2023-04-21 21:01:56'),
+(22, 'order_64428cdf50b739379', 1, 17, 'room3', 0, '2023-04-21 21:17:19');
 
 -- --------------------------------------------------------
 
@@ -388,25 +489,20 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `order_list` (
   `id` int(30) NOT NULL,
-  `order_id` int(30) NOT NULL,
+  `order_id` varchar(150) NOT NULL,
   `product_id` int(30) NOT NULL,
   `qty` int(30) NOT NULL,
   `amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `order_list`
 --
 
 INSERT INTO `order_list` (`id`, `order_id`, `product_id`, `qty`, `amount`) VALUES
-(25, 3, 20, 0, 0),
-(26, 4, 20, 0, 0),
-(27, 5, 19, 0, 0),
-(28, 6, 21, 0, 0),
-(29, 7, 23, 0, 0),
-(30, 8, 22, 0, 0),
-(31, 9, 20, 0, 0),
-(32, 10, 24, 0, 0);
+(23, 'order_6440b792980e65131', 3, 2, 466),
+(24, 'order_6440b792980e65131', 4, 2, 666),
+(25, 'order_64428cdf50b739379', 6, 5, 1165);
 
 -- --------------------------------------------------------
 
@@ -418,16 +514,15 @@ CREATE TABLE `product_inventory` (
   `id` int(30) NOT NULL,
   `prod_id` int(30) NOT NULL,
   `prod_qty` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product_inventory`
 --
 
 INSERT INTO `product_inventory` (`id`, `prod_id`, `prod_qty`) VALUES
-(14, 0, 122),
-(15, 21, 21),
-(16, 20, 3);
+(1, 1, -30),
+(2, 6, 13);
 
 -- --------------------------------------------------------
 
@@ -440,21 +535,38 @@ CREATE TABLE `product_list` (
   `category_id` int(30) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `price` float NOT NULL DEFAULT 0,
+  `price` float NOT NULL DEFAULT '0',
   `img_path` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0= unavailable, 2 Available',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0= unavailable, 2 Available',
   `prod_qty` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product_list`
 --
 
 INSERT INTO `product_list` (`id`, `category_id`, `name`, `description`, `price`, `img_path`, `status`, `prod_qty`) VALUES
-(0, 17, 'Breakfast Bundle 1', 'sample ', 250, '1678901520_FOODS 8.jpeg', 1, 0),
-(20, 16, 'Condoms', 'description', 40, '1678794360_64283281_906.jpg', 1, 0),
-(21, 17, 'Calamares', 'sample', 259, '1678901520_FOODS 7.jpg', 1, 0),
-(24, 14, 'Special Sopas', 'masarap', 150, '1680082140_special_sopas.jpg', 1, 0);
+(3, 2, 'Calamares', 'sample', 233, '1681961940_1678877940_FOODS 7.jpg', 1, 0),
+(4, 1, 'Burger', 'sampole', 333, '1681961940_1681807260_1678877940_FOODS 3.png', 1, 0),
+(5, 3, 'Sopas', 'sample', 55, '1681962000_1681737900_Simply-Recipes-Butternut-Apple-Soup-Lead-3-06f4b89c9d564fd9815a1b6c2ed8e699.jpg', 1, 0),
+(6, 1, 'Barger', 'sample', 233, '1681962000_1681961940_1681807260_1678877940_FOODS 3.png', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating_review`
+--
+
+CREATE TABLE `rating_review` (
+  `sr_no` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `review` varchar(300) NOT NULL,
+  `seen` int(11) NOT NULL DEFAULT '0',
+  `datentime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -465,33 +577,26 @@ INSERT INTO `product_list` (`id`, `category_id`, `name`, `description`, `price`,
 CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `area` int(11) NOT NULL,
+  `area` int(11) DEFAULT NULL,
   `price` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `guest` int(11) NOT NULL,
   `description` varchar(200) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1,
-  `removed` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `removed` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `rooms`
 --
 
 INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `guest`, `description`, `status`, `removed`) VALUES
-(1, 'Simple Room', 13, 13, 13, 13, 'adasdas', 1, 1),
-(2, 'Simple Room', 13, 13, 13, 13, 'adsdadas', 1, 1),
-(3, 'Simple Room', 13, 13, 13, 13, '13131sada', 1, 1),
-(4, '313', 3131, 13, 13, 312, 'dasdas', 1, 1),
-(5, 'last', 1, 1, 11, 1, 'd11', 1, 1),
-(6, 'Simple Room12', 1, 1, 1, 1, 'ada', 1, 1),
-(7, 'Standard', 15, 500, 1, 5, 'Standard room', 1, 1),
-(8, 'Deluxe Room', 50, 5000, 1, 5, 'Grande', 1, 1),
-(9, 'Standard', 150, 500, 1, 5, 'Standard Room affordable', 1, 1),
-(10, 'Standard Room', 50, 1000, 1, 10, 'Standard room for family', 1, 1),
-(11, 'Deluxe Room', 150, 5000, 1, 15, 'Deluxe Room for vacation', 1, 1),
-(12, 'Standard Room', 50, 500, 1, 5, 'Standard Room', 1, 1),
-(13, 'Deluxe Room', 100, 1000, 1, 10, 'Good for vacation', 1, 0);
+(1, 'Standard Room', 30, 200, 1, 5, 'Standard Room for tropas', 1, 0),
+(4, 'Deluxe Room', 0, 400, 1, 2, 'Good for 2 pax Special Conditions: Free Breakfast Meals for 2 adults included in the room rate Occupancy: Rate is good for 2 adults. Extra person is chargeable at P800/night with breakfast. It should ', 1, 0),
+(5, 'Deluxe Room', 0, 400, 1, 2, 'Good for 2 pax Special Conditions: Free Breakfast Meals for 2 adults included in the room rate Occupancy: Rate is good for 2 adults. Extra person is chargeable at P800/night with breakfast. It should ', 1, 1),
+(6, 'Superior Room', 0, 600, 1, 3, 'Good for 3 pax Special Conditions: Free Breakfast Meals for 2 adults included in the room rate Occupancy: Rate is good for 3 adults. Extra person is chargeable at P800/night with breakfast. It should ', 1, 0),
+(7, 'Premium Room', 0, 800, 1, 4, 'Good for 4 pax Special Conditions: Free Breakfast Meals for 2 adults included in the room rate Occupancy: Rate is good for 4 adults. Extra person is chargeable at P800/night with breakfast. It should ', 1, 0),
+(8, 'Suite Room', 0, 1000, 1, 5, 'Good for 3 pax Special Conditions: Free Breakfast Meals for 2 adults included in the room rate Occupancy: Rate is good for 4 adults. Extra person is chargeable at P800/night with breakfast. It should ', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -503,15 +608,27 @@ CREATE TABLE `room_facilities` (
   `sr_no` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `facilities_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `room_facilities`
 --
 
 INSERT INTO `room_facilities` (`sr_no`, `room_id`, `facilities_id`) VALUES
-(29, 13, 6),
-(30, 13, 7);
+(64, 6, 5),
+(65, 6, 6),
+(66, 6, 7),
+(67, 6, 8),
+(68, 4, 5),
+(69, 4, 6),
+(70, 4, 8),
+(71, 4, 12),
+(93, 7, 5),
+(94, 7, 6),
+(95, 7, 13),
+(96, 8, 5),
+(97, 8, 6),
+(98, 8, 15);
 
 -- --------------------------------------------------------
 
@@ -523,16 +640,37 @@ CREATE TABLE `room_features` (
   `sr_no` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `features_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `room_features`
 --
 
 INSERT INTO `room_features` (`sr_no`, `room_id`, `features_id`) VALUES
-(27, 13, 8),
-(28, 13, 9),
-(29, 13, 10);
+(75, 6, 8),
+(76, 6, 11),
+(77, 6, 12),
+(78, 6, 13),
+(79, 6, 14),
+(80, 4, 8),
+(81, 4, 11),
+(82, 4, 14),
+(127, 7, 8),
+(128, 7, 9),
+(129, 7, 10),
+(130, 7, 11),
+(131, 7, 12),
+(132, 7, 13),
+(133, 7, 14),
+(134, 7, 15),
+(135, 8, 7),
+(136, 8, 8),
+(137, 8, 9),
+(138, 8, 10),
+(139, 8, 11),
+(140, 8, 12),
+(141, 8, 13),
+(142, 8, 15);
 
 -- --------------------------------------------------------
 
@@ -544,16 +682,18 @@ CREATE TABLE `room_images` (
   `sr_no` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `image` varchar(150) NOT NULL,
-  `thumb` tinyint(4) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `thumb` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `room_images`
 --
 
 INSERT INTO `room_images` (`sr_no`, `room_id`, `image`, `thumb`) VALUES
-(20, 13, 'IMG_75774.png', 0),
-(21, 13, 'IMG_16308.png', 1);
+(2, 4, 'IMG_24214.jpg', 1),
+(3, 6, 'IMG_97341.jpg', 1),
+(4, 7, 'IMG_86189.jpg', 1),
+(5, 8, 'IMG_41417.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -566,36 +706,14 @@ CREATE TABLE `settings` (
   `site_title` varchar(50) NOT NULL,
   `site_about` varchar(250) NOT NULL,
   `shutdown` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `settings`
 --
 
 INSERT INTO `settings` (`sr_no`, `site_title`, `site_about`, `shutdown`) VALUES
-(1, 'Hotel Mokko', 'BLALALHLHALHLHALHAHAdasdasdasdasad123', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `supply_list`
---
-
-CREATE TABLE `supply_list` (
-  `id` int(30) NOT NULL,
-  `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `supply_list`
---
-
-INSERT INTO `supply_list` (`id`, `name`) VALUES
-(1, 'Fabric Detergent'),
-(2, 'Fabric Conditioner'),
-(3, 'Baking Soda'),
-(4, 'Bar Soap'),
-(5, 'dummy');
+(1, 'Axiaa Hotel', 'ASDASDASDASDASDAS', 0);
 
 -- --------------------------------------------------------
 
@@ -610,14 +728,14 @@ CREATE TABLE `system_settings` (
   `contact` varchar(20) NOT NULL,
   `cover_img` text NOT NULL,
   `about_content` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `system_settings`
 --
 
 INSERT INTO `system_settings` (`id`, `name`, `email`, `contact`, `cover_img`, `about_content`) VALUES
-(1, 'Axia Hotel Foods and Room Services', 'kentalexandre.cabacang.ortego@gmail.com', '12312312', '1678877700_BANNER 1.jpg', '&lt;p&gt;Welcome to our &lt;b&gt;Room and Food Services&lt;/b&gt; - your ultimate destination for a comfortable and convenient stay. We understand that staying away from home can be a challenge, which is why we are committed to providing you with the best of both worlds - cozy accommodations and delicious cuisine. Our team of dedicated professionals strives to make your stay as relaxing and hassle-free as possible, allowing you to focus on enjoying your time with us. From our luxurious rooms to our carefully crafted menus, every aspect of our services is designed to cater to your needs and preferences. So whether you&amp;#x2019;re traveling for business or pleasure, let us take care of you with our exceptional Room and Food Services. We look forward to welcoming you and providing you with a memorable experience that you&amp;#x2019;ll want to relive again and again.&lt;br&gt;&lt;/p&gt;');
+(1, 'AXIA', 'margh@gmail.com', '09192663306', '1681833180_1678877700_BANNER 1.jpg', 'xzxzxzxzx');
 
 -- --------------------------------------------------------
 
@@ -629,7 +747,7 @@ CREATE TABLE `team_details` (
   `sr_no` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `picture` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `team_details`
@@ -657,22 +775,15 @@ CREATE TABLE `users` (
   `name` varchar(200) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `type` tinyint(1) NOT NULL DEFAULT 2 COMMENT '1=admin , 2 = staff'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `type` tinyint(1) NOT NULL DEFAULT '2' COMMENT '1=admin , 2 = staff'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `type`) VALUES
-(1, 'Administrator', 'admin', '123456', 1),
-(2, 'Admin', '', '', 2),
-(5, 'Kent Ortego', '', '', 2),
-(6, 'Kent Alexandre', '', '', 2),
-(9, 'test', '', '', 2),
-(10, 'qqqq', '', '', 2),
-(11, 'qqqqqqq', '', '', 2),
-(12, 'qqqqqq', '', '', 2);
+(1, 'admin', 'admin', '123456', 1);
 
 -- --------------------------------------------------------
 
@@ -689,21 +800,23 @@ CREATE TABLE `user_cred` (
   `pincode` int(11) NOT NULL,
   `dob` date NOT NULL,
   `profile` varchar(100) NOT NULL,
+  `valid_id` varchar(100) NOT NULL,
   `password` varchar(150) NOT NULL,
-  `is_verified` int(11) NOT NULL DEFAULT 0,
+  `is_verified` int(11) NOT NULL DEFAULT '0',
   `token` varchar(200) DEFAULT NULL,
   `t_expire` date DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
-  `datentime` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` int(11) NOT NULL DEFAULT '1',
+  `datentime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user_cred`
 --
 
-INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phonenum`, `pincode`, `dob`, `profile`, `password`, `is_verified`, `token`, `t_expire`, `status`, `datentime`) VALUES
-(25, 'Jheremie Magat', 'jheremiemagat@gmail.com', '242 Mapayapa st. Freedm Park 2', '09279174628', 1126, '2002-05-24', 'IMG_11276.jpeg', '$2y$10$GNkKgwhHA0apRWSN97rv3eGVDXCG92ju8/y3e6fPs6Ik/lQzS/aF6', 1, NULL, NULL, 1, '2023-03-30 07:58:22'),
-(26, 'Margh', 'sample@gmail.com', 'Sheeesh', '09279174628', 1126, '2002-05-24', 'IMG_11276.jpeg', '123456', 1, NULL, NULL, 1, '2023-03-30 07:58:22');
+INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phonenum`, `pincode`, `dob`, `profile`, `valid_id`, `password`, `is_verified`, `token`, `t_expire`, `status`, `datentime`) VALUES
+(1, 'Jheremie O Magat', 'jheremiemagat@gmail.com', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC', '09279174621', 1234, '2023-04-18', 'IMG_39757.jpeg', 'IMG_28447.jpeg', '$2y$10$ooZACACRksgMdm2wUMsmt.pFa4HCGlN83WcFIo0chJUh/4zT2.kHG', 1, 'c1e5aa176146ef7e01e2df9978c66b37', NULL, 1, '2023-04-18 23:26:44'),
+(3, 'Jheremie O Magat', 'jheremie.magat32@gmail.com', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC', '09279174623', 1234, '2023-04-20', 'IMG_68979.jpeg', 'IMG_82236.jpeg', '$2y$10$Bf.jkwymB6AXH9N9YC7a0Og0GpqDBdx0vR.uTI9oU4FzGIBUjJikm', 0, 'acf3fc81a47820e5575f9cb13136a839', NULL, 1, '2023-04-20 04:10:46'),
+(4, 'Jheremie O Magat', 'pampogi9@gmail.com', '242 Mapayapa St. Freedom Park 2 Batasan Hills QC', '09279174626', 1234, '2023-04-20', 'IMG_36782.jpeg', 'IMG_36782.jpeg', '$2y$10$fC9Y79KelLPRzwsci2Y85.ZWyGCLS/ImXCGdMmQcCoj4AOkVvwpF2', 0, '774853df0bc356a3ef6a2ee61c4908ba', NULL, 1, '2023-04-20 04:44:21');
 
 -- --------------------------------------------------------
 
@@ -712,25 +825,50 @@ INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phonenum`, `pincode`
 --
 
 CREATE TABLE `user_info` (
-  `user_id` int(10) NOT NULL,
-  `room_no` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `r_id` int(10) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `room_no` varchar(250) NOT NULL,
+  `status` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`user_id`, `room_no`) VALUES
-(1, 'room 1'),
-(2, 'room 2'),
-(3, 'room 3'),
-(4, 'room 4'),
-(5, 'room 5'),
-(6, 'room 6');
+INSERT INTO `user_info` (`r_id`, `user_id`, `booking_id`, `room_no`, `status`) VALUES
+(1, 0, 10, 'room2', ''),
+(2, 0, 0, 'room5', ''),
+(3, 1, 17, 'room3', ''),
+(4, 1, 13, 'room6', ''),
+(5, 0, 12, 'room7', ''),
+(6, 0, 0, 'room8', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_queries`
+--
+
+CREATE TABLE `user_queries` (
+  `sr_no` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `message` varchar(200) NOT NULL,
+  `datentime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `seen` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admin_cred`
@@ -739,19 +877,31 @@ ALTER TABLE `admin_cred`
   ADD PRIMARY KEY (`sr_no`);
 
 --
+-- Indexes for table `billing_admin`
+--
+ALTER TABLE `billing_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `booking_details`
 --
 ALTER TABLE `booking_details`
   ADD PRIMARY KEY (`sr_no`),
-  ADD KEY `booking_id` (`booking_id`);
+  ADD KEY `booking_details_ibfk_1` (`booking_id`);
 
 --
 -- Indexes for table `booking_order`
 --
 ALTER TABLE `booking_order`
   ADD PRIMARY KEY (`booking_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `room_id` (`room_id`);
+  ADD KEY `booking_order_ibfk_1` (`user_id`),
+  ADD KEY `booking_order_ibfk_2` (`room_id`);
+
+--
+-- Indexes for table `business_detail`
+--
+ALTER TABLE `business_detail`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `carousel`
@@ -772,10 +922,22 @@ ALTER TABLE `category_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `chats`
+--
+ALTER TABLE `chats`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact_details`
 --
 ALTER TABLE `contact_details`
   ADD PRIMARY KEY (`sr_no`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `facilities`
@@ -794,6 +956,20 @@ ALTER TABLE `features`
 --
 ALTER TABLE `inventory`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `invoices_draft`
+--
+ALTER TABLE `invoices_draft`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `invoiceno` (`invoiceno`);
+
+--
+-- Indexes for table `items_draft`
+--
+ALTER TABLE `items_draft`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `invoice_id` (`invoice_id`);
 
 --
 -- Indexes for table `laundry_categories`
@@ -817,7 +993,8 @@ ALTER TABLE `laundry_list`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `order_list`
@@ -838,6 +1015,15 @@ ALTER TABLE `product_list`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rating_review`
+--
+ALTER TABLE `rating_review`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `booking_id` (`booking_id`),
+  ADD KEY `room_id` (`room_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
@@ -848,35 +1034,29 @@ ALTER TABLE `rooms`
 --
 ALTER TABLE `room_facilities`
   ADD PRIMARY KEY (`sr_no`),
-  ADD KEY `facilities id` (`facilities_id`),
-  ADD KEY `room id` (`room_id`);
+  ADD KEY `facilities_id` (`facilities_id`),
+  ADD KEY `room_id` (`room_id`);
 
 --
 -- Indexes for table `room_features`
 --
 ALTER TABLE `room_features`
   ADD PRIMARY KEY (`sr_no`),
-  ADD KEY `features id` (`features_id`),
-  ADD KEY `rm id` (`room_id`);
+  ADD KEY `features_id` (`features_id`),
+  ADD KEY `room_id` (`room_id`);
 
 --
 -- Indexes for table `room_images`
 --
 ALTER TABLE `room_images`
   ADD PRIMARY KEY (`sr_no`),
-  ADD KEY `room_id` (`room_id`);
+  ADD KEY `room_images_ibfk_1` (`room_id`);
 
 --
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`sr_no`);
-
---
--- Indexes for table `supply_list`
---
-ALTER TABLE `supply_list`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `system_settings`
@@ -906,77 +1086,197 @@ ALTER TABLE `user_cred`
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`r_id`);
+
+--
+-- Indexes for table `user_queries`
+--
+ALTER TABLE `user_queries`
+  ADD PRIMARY KEY (`sr_no`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `activities`
+--
+ALTER TABLE `activities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `admin_cred`
+--
+ALTER TABLE `admin_cred`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `billing_admin`
+--
+ALTER TABLE `billing_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `booking_order`
+--
+ALTER TABLE `booking_order`
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `business_detail`
+--
+ALTER TABLE `business_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `carousel`
+--
+ALTER TABLE `carousel`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category_list`
 --
 ALTER TABLE `category_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `chats`
+--
+ALTER TABLE `chats`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `contact_details`
+--
+ALTER TABLE `contact_details`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `facilities`
+--
+ALTER TABLE `facilities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `invoices_draft`
+--
+ALTER TABLE `invoices_draft`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `items_draft`
+--
+ALTER TABLE `items_draft`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `laundry_categories`
 --
 ALTER TABLE `laundry_categories`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `laundry_items`
 --
 ALTER TABLE `laundry_items`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `laundry_list`
 --
 ALTER TABLE `laundry_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `product_inventory`
 --
 ALTER TABLE `product_inventory`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product_list`
 --
 ALTER TABLE `product_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `supply_list`
+-- AUTO_INCREMENT for table `rating_review`
 --
-ALTER TABLE `supply_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `rating_review`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `room_facilities`
+--
+ALTER TABLE `room_facilities`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+
+--
+-- AUTO_INCREMENT for table `room_features`
+--
+ALTER TABLE `room_features`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+
+--
+-- AUTO_INCREMENT for table `room_images`
+--
+ALTER TABLE `room_images`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -985,16 +1285,85 @@ ALTER TABLE `system_settings`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `team_details`
+--
+ALTER TABLE `team_details`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user_cred`
+--
+ALTER TABLE `user_cred`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `r_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user_queries`
+--
+ALTER TABLE `user_queries`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  ADD CONSTRAINT `booking_details_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking_order` (`booking_id`);
+
+--
+-- Constraints for table `booking_order`
+--
+ALTER TABLE `booking_order`
+  ADD CONSTRAINT `booking_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_cred` (`id`),
+  ADD CONSTRAINT `booking_order_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
+
+--
+-- Constraints for table `items_draft`
+--
+ALTER TABLE `items_draft`
+  ADD CONSTRAINT `items_draft_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoices_draft` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `rating_review`
+--
+ALTER TABLE `rating_review`
+  ADD CONSTRAINT `rating_review_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking_order` (`booking_id`),
+  ADD CONSTRAINT `rating_review_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`),
+  ADD CONSTRAINT `rating_review_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user_cred` (`id`);
+
+--
+-- Constraints for table `room_facilities`
+--
+ALTER TABLE `room_facilities`
+  ADD CONSTRAINT `room_facilities_ibfk_1` FOREIGN KEY (`facilities_id`) REFERENCES `facilities` (`id`),
+  ADD CONSTRAINT `room_facilities_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
+
+--
+-- Constraints for table `room_features`
+--
+ALTER TABLE `room_features`
+  ADD CONSTRAINT `room_features_ibfk_1` FOREIGN KEY (`features_id`) REFERENCES `features` (`id`),
+  ADD CONSTRAINT `room_features_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
+
+--
+-- Constraints for table `room_images`
+--
+ALTER TABLE `room_images`
+  ADD CONSTRAINT `room_images_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

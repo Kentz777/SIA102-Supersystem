@@ -75,12 +75,20 @@
 							<thead>
 								<tr>
 									<th class="text-center">#</th>
-									<th class="text-center">Img</th>
+									<th class="text-center">Images</th>
 									<th class="text-center">Product Description</th>
 									<th class="text-center">Category</th>
 									<th class="text-center">Action</th>
 								</tr>
 							</thead>
+
+							<?php
+								$j = 1;
+								$categs = $conn->query("SELECT * FROM category_list order by id asc");
+			
+								while ($row = $categs->fetch_assoc()) :
+									$sup_arr[$row['id']] = $row['name'];
+								endwhile; ?>
 							<tbody>
 								<?php
 								$i = 1;
@@ -98,7 +106,7 @@
 											<p>Price : <b><?php echo "P" . number_format($row['price'], 2) ?></b></p>
 
 										</td>
-										<td class="text-center"><?php echo $row['category_id'] ?></td>
+										<td class="text-center"><?php echo $sup_arr[$row['category_id']] ?></td>
 										<td class="text-center">
 											<button class="btn btn-sm btn-primary edit_menu" type="button" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['name'] ?>" data-status="<?php echo $row['status'] ?>" data-description="<?php echo $row['description'] ?>" data-price="<?php echo $row['price'] ?>" data-img_path="<?php echo $row['img_path'] ?>">Edit</button>
 											<button class="btn btn-sm btn-danger delete_menu" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>

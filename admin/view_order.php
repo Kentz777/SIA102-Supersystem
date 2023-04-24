@@ -25,6 +25,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
+				
 				<th colspan="2" class="text-right">TOTAL</th>
 				<th><?php echo number_format($total, 2) ?></th>
 			</tr>

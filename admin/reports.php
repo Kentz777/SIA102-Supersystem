@@ -58,7 +58,7 @@
 							<?php
 								
 								$total = 0;
-								$qry = $conn->query("SELECT * FROM laundry_list where pay_status = 1 and date(date_created) between '$d1' and '$d2' ");
+								$qry = $conn->query("SELECT * FROM order_list ol join orders o on o.id = ol.order_id where o.status = 3 and o.date between '$d1' and '$d2' ");
 								while($row=$qry->fetch_assoc()):
 									$total += $row['total_amount'];
 							?>
