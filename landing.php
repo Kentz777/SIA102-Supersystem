@@ -14,10 +14,12 @@ foreach ($query as $key => $value) {
 if (isset($_POST['qr'])) {
     $room_no = mysqli_real_escape_string($conn, $_POST['qr']);
 
-    $qry = "SELECT *,ui.user_id as uiuser, ui.room_no as uiroom, bd.user_name as bduser, ui.booking_id as bookid FROM user_info ui 
-        join booking_order bo on bo.user_id = ui.user_id
-        join booking_details bd on bd.booking_id = bo.booking_id
-        WHERE ui.room_no = '$room_no'";
+    // $qry = "SELECT *,ui.user_id as uiuser, ui.room_no as uiroom, bd.user_name as bduser, ui.booking_id as bookid FROM user_info ui 
+    //     join booking_order bo on bo.user_id = ui.user_id
+    //     join booking_details bd on bd.booking_id = bo.booking_id
+    //     WHERE ui.room_no = '$room_no'";
+
+    $qry = "SELECT * FROM booking_details bd join booking_order bo on bd.booking_id = bo.booking_id where bd.room_no = '$room_no'";
 
     $result = $conn->query($qry);
 

@@ -19,44 +19,74 @@
 				</div>
 				<hr>
 				<div class="row">
+
+				<!-- TOTAL PROFIT TODAY  -->
 				<div class="alert alert-success col-md-3 ml-4">
 					<p><b><large>Total Profit Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 
 					include 'db_connect.php';
-					$laundry = $conn->query("SELECT SUM(total_amount) as amount FROM laundry_list where pay_status= 1 and date(date_created)= '".date('Y-m-d')."'");
+					$laundry = $conn->query("SELECT SUM(ol.amount) as amount FROM order_list ol join orders o on ol.order_id = o.order_id where o.status= 3 and DATE(o.date) = CURRENT_DATE");
 					echo $laundry->num_rows > 0 ? number_format($laundry->fetch_array()['amount'],2) : "0.00";
 
 					 ?></large></b></p>
 				</div>
+
+				<!-- TOTAL ORDERS TODAY  -->
 				<div class="alert alert-info col-md-3 ml-4">
-					<p><b><large>Total Customer Today</large></b></p>
+					<p><b><large>Total Orders Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 
 					include 'db_connect.php';
-					$laundry = $conn->query("SELECT count(id) as `count` FROM laundry_list where  date(date_created)= '".date('Y-m-d')."'");
+					$laundry = $conn->query("SELECT count(id) as count FROM orders where date(date) = CURRENT_DATE");
 					echo $laundry->num_rows > 0 ? number_format($laundry->fetch_array()['count']) : "0";
 
 					 ?></large></b></p>
 				</div>
-				<div class="alert alert-primary col-md-3 ml-4">
-					<p><b><large>Total Claimed Laundry Today</large></b></p>
+
+				<!-- TOTAL PRODUCTS CLAIMED TODAY -->
+				<div class="alert alert-danger col-md-3 ml-4">
+					<p><b><large>Total Order(s) Claimed Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 
 					include 'db_connect.php';
-					$laundry = $conn->query("SELECT count(id) as `count` FROM laundry_list where status = 3 and date(date_created)= '".date('Y-m-d')."'");
+					$laundry = $conn->query("SELECT count(id) as count FROM orders where status = 3 and date(date) = CURRENT_DATE");
+					echo $laundry->num_rows > 0 ? number_format($laundry->fetch_array()['count']) : "0";
+
+					 ?></large></b></p>
+				</div>
+
+<!-- TOTAL PRODUCTS CLAIMED TODAY -->
+				<div class="alert alert-danger col-md-3 ml-4">
+					<p><b><large>Total Pending Order(s) Today</large></b></p>
+				<hr>
+					<p class="text-right"><b><large><?php 
+					include 'db_connect.php';
+					$laundry = $conn->query("SELECT count(id) as count FROM orders where status = 0 and date(date) = CURRENT_DATE");
+					echo $laundry->num_rows > 0 ? number_format($laundry->fetch_array()['count']) : "0";
+
+					 ?></large></b></p>
+				</div>
+
+<!-- TOTAL PRODUCTS CLAIMED TODAY -->
+				<div class="alert alert-danger col-md-3 ml-4">
+					<p><b><large>Total Processing Order(s) Today</large></b></p>
+				<hr>
+					<p class="text-right"><b><large><?php 
+					include 'db_connect.php';
+					$laundry = $conn->query("SELECT count(id) as count FROM orders where status = 1 and date(date) = CURRENT_DATE");
 					echo $laundry->num_rows > 0 ? number_format($laundry->fetch_array()['count']) : "0";
 
 					 ?></large></b></p>
 				</div>
 
 				<div class="alert alert-danger col-md-3 ml-4">
-					<p><b><large>Total Food Claimed Today</large></b></p>
+					<p><b><large>Total Ready to claim Order(s) Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 
 					include 'db_connect.php';
-					$laundry = $conn->query("SELECT SUM(total_amount) as amount FROM laundry_list where pay_status= 1 and date(date_created)= '".date('Y-m-d')."'");
-					echo $laundry->num_rows > 0 ? number_format($laundry->fetch_array()['amount'],2) : "0.00";
+					$laundry = $conn->query("SELECT count(id) as count FROM orders where status = 2 and date(date) = CURRENT_DATE");
+					echo $laundry->num_rows > 0 ? number_format($laundry->fetch_array()['count']) : "0";
 
 					 ?></large></b></p>
 				</div>

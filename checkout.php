@@ -17,11 +17,11 @@
                     <h4>Confirm Delivery Information</h4>
                     <div class="form-group">
                         <label for="" class="control-label">Guest Name</label>
-                        <input type="text" name="user" readonly required="" class="form-control" value="<?php echo $_SESSION['login_bduser'] ?>">
+                        <input type="text" name="user" readonly required="" class="form-control" value="<?php echo $_SESSION['login_user_name'] ?>">
                     </div>  
                     <div class="form-group">
                         <label for="" class="control-label">Room No.</label>
-                        <input type="text" name="room_no" readonly required="" class="form-control" value="<?php echo $_SESSION['login_uiroom'] ?>">
+                        <input type="text" name="room_no" readonly required="" class="form-control" value="<?php echo $_SESSION['login_room_no'] ?>">
                     </div>  
 
                     <div class="text-center">

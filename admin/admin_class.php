@@ -320,7 +320,7 @@ class Action
 		$data = " address = '" . $room_no . "' ";
 		$data .= ", user_id = '" . $_SESSION['login_user_id'] . "' ";
 		$data .= ", order_id = '$order_id' ";
-		$data .= ", booking_id = '" . $_SESSION['login_bookid'] . "' ";
+		$data .= ", booking_id = '" . $_SESSION['login_booking_id'] . "' ";
 
 		$save = $this->db->query("INSERT INTO orders SET " . $data);
 		if ($save) {

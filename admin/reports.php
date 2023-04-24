@@ -1,5 +1,7 @@
 <?php
  include 'db_connect.php'; 
+
+ date_default_timezone_set('Asia/Manila');
  $d1 = (isset($_GET['d1']) ? date("Y-m-d",strtotime($_GET['d1'])) : date("Y-m-d")) ;
  $d2 = (isset($_GET['d2']) ? date("Y-m-d",strtotime($_GET['d2'])) : date("Y-m-d")) ;
  $data = $d1 == $d2 ? $d1 : $d1. ' - ' . $d2;
@@ -49,7 +51,9 @@
 					<table class='table table-bordered'>
 						<thead>
 							<tr>
-								<th>Date</th>
+								<th>Date
+								<?php echo date("M d, Y") ?>
+								</th>
 								<th>Customer Name</th>
 								<th>Total Amount</th>
 							</tr>
@@ -58,14 +62,21 @@
 							<?php
 								
 								$total = 0;
-								$qry = $conn->query("SELECT * FROM order_list ol join orders o on o.id = ol.order_id where o.status = 3 and o.date between '$d1' and '$d2' ");
+								$qry = $conn->query("SELECT * FROM order_list ol 
+                     			JOIN orders o ON ol.order_id = o.order_id
+                     			JOIN booking_details bd ON o.booking_id = bd.booking_id
+                     			WHERE o.status = 3 
+                     			AND o.date >= '".$d1."' 
+                     			AND o.date <= DATE_ADD('".$d2."', INTERVAL 1 DAY)");
+
 								while($row=$qry->fetch_assoc()):
-									$total += $row['total_amount'];
+									$total += $row['amount'];
 							?>
 							<tr>
-								<td><?php echo date("M d, Y",strtotime($row['date_created'])) ?></td>
-								<td><?php echo ucwords($row['customer_name']) ?></td>
-								<td class='text-right'><?php echo number_format($row['total_amount'],2) ?></td>
+								<td><?php echo date("M d, Y",strtotime($row['date'])) ?></td>
+								<td></td>
+								<td><?php echo ucwords($row['user_name']) ?></td>
+								<td class='text-right'><?php echo number_format($row['amount'],2) ?></td>
 							</tr>
 							<?php endwhile; ?>
 						</tbody>
