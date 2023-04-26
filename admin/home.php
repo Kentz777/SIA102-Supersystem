@@ -45,7 +45,7 @@
 				</div>
 
 				<!-- TOTAL PRODUCTS CLAIMED TODAY -->
-				<div class="alert alert-danger col-md-3 ml-4">
+				<div class="alert alert-success col-md-3 ml-4">
 					<p><b><large>Total Order(s) Claimed Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 
@@ -57,7 +57,7 @@
 				</div>
 
 <!-- TOTAL PRODUCTS CLAIMED TODAY -->
-				<div class="alert alert-danger col-md-3 ml-4">
+				<div class="alert alert-secondary col-md-3 ml-4">
 					<p><b><large>Total Pending Order(s) Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 
@@ -69,7 +69,7 @@
 				</div>
 
 <!-- TOTAL PRODUCTS CLAIMED TODAY -->
-				<div class="alert alert-danger col-md-3 ml-4">
+				<div class="alert alert-primary col-md-3 ml-4">
 					<p><b><large>Total Processing Order(s) Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 
@@ -80,7 +80,7 @@
 					 ?></large></b></p>
 				</div>
 
-				<div class="alert alert-danger col-md-3 ml-4">
+				<div class="alert alert-warning col-md-3 ml-4">
 					<p><b><large>Total Ready to claim Order(s) Today</large></b></p>
 				<hr>
 					<p class="text-right"><b><large><?php 

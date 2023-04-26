@@ -56,6 +56,7 @@
 								</th>
 								<th>Customer Name</th>
 								<th>Total Amount</th>
+							
 							</tr>
 						</thead>
 						<tbody>
@@ -74,7 +75,7 @@
 							?>
 							<tr>
 								<td><?php echo date("M d, Y",strtotime($row['date'])) ?></td>
-								<td></td>
+								
 								<td><?php echo ucwords($row['user_name']) ?></td>
 								<td class='text-right'><?php echo number_format($row['amount'],2) ?></td>
 							</tr>
@@ -82,8 +83,9 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<td class="text-right" colspan="2">Total</td>
-								<td class="text-right"><?php echo number_format($total,2) ?></td>
+								<td class="text-right" colspan="2"><b>Total</b></td>
+								<td class="text-right"><b><?php echo number_format($total,2) ?></b></td>
+								
 							</tr>
 						</tfoot>
 					</table>
