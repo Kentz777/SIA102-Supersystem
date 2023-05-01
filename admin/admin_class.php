@@ -176,7 +176,8 @@ class Action
 	function save_room_cat()
 	{
 		extract($_POST);
-		$data = " room_cat = '$name' ";
+		$data = " name = '$name' ";
+		$data .= ", code = '$code' ";
 		if (empty($id)) {
 			$save = $this->db->query("INSERT INTO room_category set " . $data);
 		} else {
@@ -189,11 +190,11 @@ class Action
 	function save_rooms()
 	{
 		extract($_POST);
-		$data = " room_no = '$name' ";
-		if (empty($id)) {
+		$data = " room_no = '$room_no' ";
+		if (empty($r_id)) {
 			$save = $this->db->query("INSERT INTO user_info set " . $data);
 		} else {
-			$save = $this->db->query("UPDATE user_info set " . $data . " where user_id=" . $id);
+			$save = $this->db->query("UPDATE user_info set " . $data . " where r_id=" . $r_id);
 		}
 		if ($save)
 			return 1;
@@ -206,10 +207,10 @@ class Action
 			return 1;
 	}
 
-	function delete_room()
+	function delete_rooms()
 	{
 		extract($_POST);
-		$delete = $this->db->query("DELETE FROM room_info where id = " . $id);
+		$delete = $this->db->query("DELETE FROM user_info where r_id = " . $id);
 		if ($delete)
 			return 1;
 	}
@@ -344,6 +345,7 @@ class Action
 					if ($save2) {
 						$this->db->query("DELETE FROM cart WHERE id = " . $row['cid']);
 						$this->db->query("UPDATE product_inventory SET prod_qty = prod_qty - " . $row['qty']);
+						$this->db->query("UPDATE product_list SET prod_qty = prod_qty - " . $row['qty']. " WHERE id = " . $row['product_id']);
 					}
 					$stop_product = $row['cprodid'];
 					$stop_price = $row['price'];
@@ -508,6 +510,7 @@ class Action
 			$save = $this->db->query("UPDATE product_inventory set " . $data . " where id=" . $id);
 		}
 		if ($save)
+			$this->db->query("UPDATE product_list set prod_qty = '$prod_qty' where id =".$prod_id);
 			return 1;
 	}
 

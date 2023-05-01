@@ -35,7 +35,7 @@
 							<td><?php echo $i++ ?></td>
 							<td><?php echo $row['date'] ?></td>
 							<td><?php echo $row['user_name'] ?></td>
-							<td><?php echo $row['address'] ?></td>
+							<td><?php echo $row['room_no'] ?></td>
 							
 
 

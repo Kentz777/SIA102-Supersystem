@@ -16,6 +16,7 @@
 		<?php if ($_SESSION['login_type'] == 1) : ?>
 			<!--<a href="index.php?page=guest" class="nav-item nav-guests"><span class='icon-field'><i class="fa fa-users"></i></span> Guests</a> --->
 		<!---	<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Staffs</a> --->
+		<a href="index.php?page=room_cat" class="nav-item nav-foodinventory"><span class='icon-field'><i class="fa fa-archive"></i></span>Room Category.</a>
 		<a href="index.php?page=room_no" class="nav-item nav-foodinventory"><span class='icon-field'><i class="fa fa-archive"></i></span>Room No.</a>
 			<a href="index.php?page=site_settings" class="nav-item nav-site_settings"><span class='icon-field'><i class="fa fa-cogs"></i></span>Settings</a>
 			<a href="index.php?page=reports" class="nav-item nav-reports"><span class='icon-field'><i class="fa fa-th-list"></i></span> Reports</a>
