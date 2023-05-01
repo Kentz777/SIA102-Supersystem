@@ -71,8 +71,8 @@ if($action == "delete_rooms_cat"){
 	if($save)
 		echo $save;
 }
-if($action == "delete_room"){
-	$save = $crud->delete_room();
+if($action == "delete_rooms"){
+	$save = $crud->delete_rooms();
 	if($save)
 		echo $save;
 }

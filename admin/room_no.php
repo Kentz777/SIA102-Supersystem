@@ -12,10 +12,22 @@
 						    Create Room No.
 				  	</div>
 					<div class="card-body">
-							<input type="hidden" name="id">
+							<input type="hidden" name="r_id">
 							<div class="form-group">
 								<label class="control-label">Room No.</label>
-								<input type="text" class="form-control" name="name">
+								<input type="text" class="form-control" name="room_no">
+							</div>
+							<div class="form-group">
+								<label class="control-label">Category </label>
+								<select name="name" id="" class="custom-select browser-default">
+									<?php
+									$cat = $conn->query("SELECT * FROM rooms order by name asc ");
+									while ($row = $cat->fetch_assoc()) :
+									?>
+										<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
+									<?php endwhile; ?>
+								</select>
+
 							</div>
 							
 					</div>
@@ -41,14 +53,15 @@
 							<thead>
 								<tr>
 									<th class="text-center">#</th>
-									<th class="text-center">Name</th>
+									<th class="text-center">Room#</th>
+									<th class="text-center">Category</th>
 									<th class="text-center">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php 
 								$i = 1;
-								$cats = $conn->query("SELECT * FROM user_info order by user_id asc");
+								$cats = $conn->query("SELECT * FROM user_info order by r_id asc");
 								while($row=$cats->fetch_assoc()):
 								?>
 								<tr>
@@ -56,9 +69,12 @@
 									<td class="">
 										<?php echo $row['room_no'] ?>
 									</td>
+									<td class="">
+										<?php echo $row['room_no'] ?>
+									</td>
 									<td class="text-center">
-										<button class="btn btn-sm btn-primary edit_rooms" type="button" data-id="<?php echo $row['user_id'] ?>" data-name="<?php echo $row['room_no'] ?>" >Edit</button>
-										<button class="btn btn-sm btn-danger delete_rooms" type="button" data-id="<?php echo $row['user_id'] ?>">Delete</button>
+										<button class="btn btn-sm btn-primary edit_rooms" type="button" data-id="<?php echo $row['r_id'] ?>" data-name="<?php echo $row['room_no'] ?>" >Edit</button>
+										<button class="btn btn-sm btn-danger delete_rooms" type="button" data-id="<?php echo $row['r_id'] ?>">Delete</button>
 									</td>
 								</tr>
 								<?php endwhile; ?>
@@ -109,21 +125,21 @@
 			}
 		})
 	})
-	$('.edit_cat').click(function(){
+	$('.edit_rooms').click(function(){
 		start_load()
-		var cat = $('#manage-category')
+		var cat = $('#manage-rooms')
 		cat.get(0).reset()
-		cat.find("[name='id']").val($(this).attr('data-id'))
-		cat.find("[name='name']").val($(this).attr('data-name'))
+		cat.find("[name='r_id']").val($(this).attr('data-id'))
+		cat.find("[name='room_no']").val($(this).attr('data-name'))
 		end_load()
 	})
-	$('.delete_cat').click(function(){
-		_conf("Are you sure to delete this category?","delete_cat",[$(this).attr('data-id')])
+	$('.delete_rooms').click(function(){
+		_conf("Are you sure to delete this room	?","delete_rooms",[$(this).attr('data-id')])
 	})
-	function delete_cat($id){
+	function delete_rooms($id){
 		start_load()
 		$.ajax({
-			url:'ajax.php?action=delete_category',
+			url:'ajax.php?action=delete_rooms',
 			method:'POST',
 			data:{id:$id},
 			success:function(resp){

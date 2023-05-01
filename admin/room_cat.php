@@ -13,15 +13,25 @@
 				  	</div>
 					<div class="card-body">
 							<input type="hidden" name="id">
+							
 							<div class="form-group">
-								<label class="control-label">Room Category</label>
-								<div class="form-group">
-								
+								<label class="control-label">Category </label>
+								<select name="name" id="" class="custom-select browser-default">
+									<?php
+									$cat = $conn->query("SELECT * FROM rooms order by name asc ");
+									while ($row = $cat->fetch_assoc()) :
+									?>
+										<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
+									<?php endwhile; ?>
+								</select>
 
 							</div>
-								<input type="text" class="form-control" name="name">
+
+							<div class="form-group">
+								<label class="control-label">Category Code</label>
+								
+								<input type="text" class="form-control" name="code">
 							</div>
-							
 					</div>
 							
 					<div class="card-footer">
@@ -58,11 +68,11 @@
 								<tr>
 									<td class="text-center"><?php echo $i++ ?></td>
 									<td class="">
-										<?php echo $row['room_cat'] ?>
+										<?php echo $row['name'] ?>
 									</td>
-									
+
 									<td class="text-center">
-                                    <button class="btn btn-sm btn-primary edit_room_cat" type="button" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['room_cat'] ?>" >Edit</button>
+                                    <button class="btn btn-sm btn-primary edit_room_cat" type="button" data-id="<?php echo $row['id'] ?>" data-name="<?php echo $row['name'] ?>" data-code="<?php echo $row['code'] ?>" >Edit</button>
 										<button class="btn btn-sm btn-danger delete_rooms_cat" type="button" data-id="<?php echo $row['id'] ?>">Delete</button>
 									</td>
 								</tr>
@@ -120,7 +130,8 @@
 		var cats = $('#manage-cat')
 		cats.get(0).reset()
 		cats.find("[name='id']").val($(this).attr('data-id'))
-		cats.find("[name='room_cat']").val($(this).attr('data-name'))
+		cats.find("[name='name']").val($(this).attr('data-name'))
+		cats.find("[name='code']").val($(this).attr('data-code'))
 		end_load()
 	})
 	$('.delete_rooms_cat').click(function(){
