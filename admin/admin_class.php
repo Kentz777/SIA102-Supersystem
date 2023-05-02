@@ -317,7 +317,8 @@ class Action
 	function save_order()
 	{
 		extract($_POST);
-		$order_id = uniqid('order_') . mt_rand(1000,9999);
+		$random_number = mt_rand(10000000, 99999999);
+		$order_id = "ORD_" . $random_number;
 		$data = " address = '" . $room_no . "' ";
 		$data .= ", user_id = '" . $_SESSION['login_user_id'] . "' ";
 		$data .= ", order_id = '$order_id' ";
@@ -344,7 +345,7 @@ class Action
 					$save2 = $this->db->query("INSERT INTO order_list SET " . $data);
 					if ($save2) {
 						$this->db->query("DELETE FROM cart WHERE id = " . $row['cid']);
-						$this->db->query("UPDATE product_inventory SET prod_qty = prod_qty - " . $row['qty']);
+						$this->db->query("UPDATE product_inventory SET prod_qty = prod_qty - " . $row['qty']." WHERE prod_id = " . $row['product_id']);
 						$this->db->query("UPDATE product_list SET prod_qty = prod_qty - " . $row['qty']. " WHERE id = " . $row['product_id']);
 					}
 					$stop_product = $row['cprodid'];

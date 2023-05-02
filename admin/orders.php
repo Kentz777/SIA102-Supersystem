@@ -23,7 +23,7 @@
 					// join booking_order bo on bo.user_id = ui.user_id
 					// join booking_details bd on bd.booking_id = bo.booking_id");
 
-					$qry = $conn->query("SELECT * FROM orders o
+					$qry = $conn->query("SELECT *, o.order_id as oid FROM orders o
 					join booking_order bo on bo.booking_id = o.booking_id
 					join booking_details bd on bd.booking_id = bo.booking_id");
 
@@ -49,7 +49,7 @@
 								<td class="text-center"><span class="badge badge-secondary">Pending</span></td>
 							<?php endif; ?>
 							<td>
-								<button class="btn btn-sm btn-primary view_order" data-id="<?php echo $row['id'] ?>">View Order</button>
+								<button class="btn btn-sm btn-primary view_order" data-id="<?php echo $row['id'] ?>" data-orderid="<?php echo $row['oid'] ?>">View Order</button>
 							</td>
 						</tr>
 					<?php endwhile; ?>
@@ -61,6 +61,6 @@
 </div>
 <script>
 	$('.view_order').click(function() {
-		uni_modal('Order', 'view_order.php?id=' + $(this).attr('data-id'))
+		uni_modal('Order', 'view_order.php?id=' + $(this).attr('data-id') + '&order_id=' + $(this).attr('data-orderid'))
 	})
 </script>

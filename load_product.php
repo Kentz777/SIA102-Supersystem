@@ -32,7 +32,7 @@ if (mysqli_num_rows($result) > 0) {
         $html_markup .= "<p class='card-text truncate'>$product_desc</p>";
         $html_markup .= "<h6 class='card-title'>Price: ₱$product_price</h6>";
         $html_markup .= "<div class='text-center'>";
-        $html_markup .= "<button class='btn btn-sm btn-outline-primary view_prod btn-block' data-id=$product_id><i class='fa fa-eye'></i> View</button>";
+        $html_markup .= "<button class='btn btn-sm btn-outline-primary view_prod btn-block' data-id=$product_id><i class='fa fa-eye'></i>View</button>";
         $html_markup .= "</div>";
         $html_markup .= "</div>";
         $html_markup .= "</div>";
@@ -46,3 +46,34 @@ echo $html_markup;
 
 mysqli_close($conn);
 ?>
+<script>
+
+$(document).ready(function () {
+
+  $.ajax({
+    type: 'GET',
+    url: 'load_categories.php',
+    success: function(data){
+      $('#category').append(data);
+    }
+  });
+
+  $('#category').on('change', function () {
+    var category = $(this).val();
+    $.ajax({
+      type: 'POST',
+      url: 'load_product.php',
+      data: { category: category },
+      success: function (data) {
+        $('#menu-field').html(data);
+      }
+    });
+  });
+});
+
+
+
+$('.view_prod').click(function () {
+    uni_modal_right('Product', 'view_prod.php?id=' + $(this).attr('data-id'))
+})
+</script>
