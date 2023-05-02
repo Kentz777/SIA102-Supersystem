@@ -50,14 +50,6 @@ mysqli_close($conn);
 
 $(document).ready(function () {
 
-  $.ajax({
-    type: 'GET',
-    url: 'load_categories.php',
-    success: function(data){
-      $('#category').append(data);
-    }
-  });
-
   $('#category').on('change', function () {
     var category = $(this).val();
     $.ajax({
