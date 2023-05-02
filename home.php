@@ -342,7 +342,7 @@ ASDASDASD
           </h6>
           <div class="text-center">
             <button class="btn btn-sm btn-outline-primary view_prod btn-block" data-id=<?php echo $row['id'] ?>>
-              <i class="fa fa-eye"></i> View
+              <i class="fa fa-eye"></i>View
             </button>
           </div>
         </div>

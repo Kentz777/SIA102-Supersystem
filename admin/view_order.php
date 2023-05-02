@@ -12,11 +12,14 @@
 			<?php
 			$total = 0;
 			include 'db_connect.php';
-			$qry = $conn->query("SELECT * FROM order_list o inner join product_list p on o.product_id = p.id  where order_id =" . $_GET['id']);
+			$qry = $conn->query("SELECT * FROM order_list o inner join product_list p on o.product_id = p.id  where o.order_id = '" . $_GET['order_id'] ."'");
+			// $qry = $conn->query("SELECT * FROM order_list");
 			while ($row = $qry->fetch_assoc()) :
 				$total += $row['qty'] * $row['price'];
 			?>
 				<tr>
+					<td><?php echo $_GET['id'] ?></td>
+					<td><?php echo $_GET['order_id'] ?></td>
 					<td><?php echo $row['qty'] ?></td>
 					<td><?php echo $row['name'] ?></td>
 					<td><?php echo number_format($row['qty'] * $row['price'], 2) ?></td>
