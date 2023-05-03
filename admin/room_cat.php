@@ -20,6 +20,7 @@
 									<?php
 									$cat = $conn->query("SELECT * FROM rooms order by name asc ");
 									while ($row = $cat->fetch_assoc()) :
+										$rcat_arr[$row['id']] = $row['name'];
 									?>
 										<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
 									<?php endwhile; ?>
@@ -68,7 +69,7 @@
 								<tr>
 									<td class="text-center"><?php echo $i++ ?></td>
 									<td class="">
-										<?php echo $row['name'] ?>
+										<?php echo $rcat_arr[$row['name']] ?>
 									</td>
 
 									<td class="text-center">

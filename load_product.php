@@ -64,7 +64,6 @@ $(document).ready(function () {
 });
 
 
-
 $('.view_prod').click(function () {
     uni_modal_right('Product', 'view_prod.php?id=' + $(this).attr('data-id'))
 })
