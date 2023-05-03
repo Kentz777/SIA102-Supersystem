@@ -14,7 +14,7 @@ img{
   		<div class="col-md-1 float-left" style="display: flex;">
   			<div>
   				<!-- <i class="fa fa-building"></i> -->
-          <img src="assets/img/nav-logo.jpg" style="width:130px; height:35px;"alt="">
+          <img src="https://images.squarespace-cdn.com/content/v1/63bc1efdf477a80d5a71c03c/f42ae550-792e-4cd6-b5c9-988c895211d1/cropped-AXIAA-FINAL-LOGO-noBG-e1592377088481.png" style="width:130px; height:35px;"alt="">
   			</div>
   		</div>
       <div class="col-md-5 float-left ml-20 text-white">

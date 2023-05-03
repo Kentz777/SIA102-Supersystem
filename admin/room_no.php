@@ -1,47 +1,50 @@
-<?php include('db_connect.php');?>
+<?php include('db_connect.php'); ?>
 
 <div class="container-fluid">
-	
+
 	<div class="col-lg-12">
 		<div class="row">
 			<!-- FORM Panel -->
 			<div class="col-md-4">
-			<form action="" id="manage-rooms">
-				<div class="card">
-					<div class="card-header">
-						    Create Room No.
-				  	</div>
-					<div class="card-body">
+				<form action="" id="manage-rooms">
+					<div class="card">
+						<div class="card-header">
+							Create Room No.
+						</div>
+						<div class="card-body">
 							<input type="hidden" name="r_id">
-							<div class="form-group">
-								<label class="control-label">Room No.</label>
+
+							<div class="input-group mb-3">
+								<span class="input-group-text" name="pre_room">Default</span>
 								<input type="text" class="form-control" name="room_no">
 							</div>
+							
 							<div class="form-group">
 								<label class="control-label">Category </label>
-								<select name="name" id="" class="custom-select browser-default">
+								<select name="category" id="category" class="custom-select browser-default">
 									<?php
 									$cat = $conn->query("SELECT * FROM rooms order by name asc ");
-									while ($row = $cat->fetch_assoc()) :
-									?>
-										<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
+									while ($row = $cat->fetch_assoc()):
+										?>
+										<option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
 									<?php endwhile; ?>
 								</select>
 
 							</div>
-							
-					</div>
-							
-					<div class="card-footer">
-						<div class="row">
-							<div class="col-md-12">
-								<button class="btn btn-sm btn-primary col-sm-3 offset-md-3"> Save</button>
-								<button class="btn btn-sm btn-default col-sm-3" type="button" onclick="$('#manage-rooms').get(0).reset()"> Cancel</button>
+
+						</div>
+
+						<div class="card-footer">
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-sm btn-primary col-sm-3 offset-md-3"> Save</button>
+									<button class="btn btn-sm btn-default col-sm-3" type="button"
+										onclick="$('#manage-rooms').get(0).reset()"> Cancel</button>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
 			</div>
 			<!-- FORM Panel -->
 
@@ -59,24 +62,29 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php 
+								<?php
 								$i = 1;
-								$cats = $conn->query("SELECT * FROM user_info order by r_id asc");
-								while($row=$cats->fetch_assoc()):
-								?>
-								<tr>
-									<td class="text-center"><?php echo $i++ ?></td>
-									<td class="">
-										<?php echo $row['room_no'] ?>
-									</td>
-									<td class="">
-										<?php echo $row['room_no'] ?>
-									</td>
-									<td class="text-center">
-										<button class="btn btn-sm btn-primary edit_rooms" type="button" data-id="<?php echo $row['r_id'] ?>" data-name="<?php echo $row['room_no'] ?>" >Edit</button>
-										<button class="btn btn-sm btn-danger delete_rooms" type="button" data-id="<?php echo $row['r_id'] ?>">Delete</button>
-									</td>
-								</tr>
+								$cats = $conn->query("SELECT * FROM user_info order by category asc");
+								while ($row = $cats->fetch_assoc()):
+									?>
+									<tr>
+										<td class="text-center">
+											<?php echo $i++ ?>
+										</td>
+										<td class="">
+											<?php echo $row['room_no'] ?>
+										</td>
+										<td class="">
+											<?php echo $row['category'] ?>
+										</td>
+										<td class="text-center">
+											<button class="btn btn-sm btn-primary edit_rooms" type="button"
+												data-id="<?php echo $row['r_id'] ?>"
+												data-name="<?php echo $row['room_no'] ?>">Edit</button>
+											<button class="btn btn-sm btn-danger delete_rooms" type="button"
+												data-id="<?php echo $row['r_id'] ?>">Delete</button>
+										</td>
+									</tr>
 								<?php endwhile; ?>
 							</tbody>
 						</table>
@@ -85,47 +93,47 @@
 			</div>
 			<!-- Table Panel -->
 		</div>
-	</div>	
+	</div>
 
 </div>
 <style>
-	
-	td{
+	td {
 		vertical-align: middle !important;
 	}
 </style>
 <script>
-	
-	$('#manage-rooms').submit(function(e){
+	$('#manage-rooms').submit(function (e) {
 		e.preventDefault()
 		start_load()
+
 		$.ajax({
-			url:'ajax.php?action=save_rooms',
+			url: 'ajax.php?action=save_rooms',
 			data: new FormData($(this)[0]),
-		    cache: false,
-		    contentType: false,
-		    processData: false,
-		    method: 'POST',
-		    type: 'POST',
-			success:function(resp){
-				if(resp==1){
-					alert_toast("Data successfully added",'success')
-					setTimeout(function(){
+			cache: false,
+			contentType: false,
+			processData: false,
+			method: 'POST',
+			type: 'POST',
+			success: function (resp) {
+				console.log(resp)
+				if (resp == 1) {
+					alert_toast("Data successfully added", 'success')
+					setTimeout(function () {
 						location.reload()
-					},1500)
+					}, 1500)
 
 				}
-				else if(resp==2){
-					alert_toast("Data successfully updated",'success')
-					setTimeout(function(){
+				else if (resp == 2) {
+					alert_toast("Data successfully updated", 'success')
+					setTimeout(function () {
 						location.reload()
-					},1500)
+					}, 1500)
 
 				}
 			}
 		})
 	})
-	$('.edit_rooms').click(function(){
+	$('.edit_rooms').click(function () {
 		start_load()
 		var cat = $('#manage-rooms')
 		cat.get(0).reset()
@@ -133,21 +141,21 @@
 		cat.find("[name='room_no']").val($(this).attr('data-name'))
 		end_load()
 	})
-	$('.delete_rooms').click(function(){
-		_conf("Are you sure to delete this room	?","delete_rooms",[$(this).attr('data-id')])
+	$('.delete_rooms').click(function () {
+		_conf("Are you sure to delete this room	?", "delete_rooms", [$(this).attr('data-id')])
 	})
-	function delete_rooms($id){
+	function delete_rooms($id) {
 		start_load()
 		$.ajax({
-			url:'ajax.php?action=delete_rooms',
-			method:'POST',
-			data:{id:$id},
-			success:function(resp){
-				if(resp==1){
-					alert_toast("Data successfully deleted",'success')
-					setTimeout(function(){
+			url: 'ajax.php?action=delete_rooms',
+			method: 'POST',
+			data: { id: $id },
+			success: function (resp) {
+				if (resp == 1) {
+					alert_toast("Data successfully deleted", 'success')
+					setTimeout(function () {
 						location.reload()
-					},1500)
+					}, 1500)
 
 				}
 			}
