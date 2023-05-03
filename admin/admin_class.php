@@ -190,7 +190,8 @@ class Action
 	function save_rooms()
 	{
 		extract($_POST);
-		$data = " room_no = '$room_no' ";
+		$room = $pre.$room_no;
+		$data = " room_no = '$room' ";
 		$data .= ", category = '$category' ";
 
 		if (empty($r_id)) {

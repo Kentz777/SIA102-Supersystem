@@ -13,7 +13,10 @@
 						</div>
 						<div class="card-body">
 							<input type="hidden" name="r_id">
-							
+							<div class="input-group mb-3">
+								<input type="text" readonly value = "DR" name="pre" style="width: 100px;"class="input-group-text" id="pre">
+								<input type="text" class="form-control" name="room_no" required>
+							</div>
 							<div class="form-group">
 								<label class="control-label">Category </label>
 								<select name="category" id="category" class="custom-select browser-default">
@@ -21,15 +24,10 @@
 									$cat = $conn->query("SELECT * FROM rooms order by name asc ");
 									while ($row = $cat->fetch_assoc()):
 										?>
-										<option data-name="<?php echo $row['name'] ?>" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+										<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
 									<?php endwhile; ?>
 								</select>
 							</div>
-							<div class="input-group mb-3">
-								<span class="input-group-text" name="pre_room"><?php echo $row['name'] ?></span>
-								<input type="text" class="form-control" name="room_no">
-							</div>
-
 						</div>
 
 						<div class="card-footer">
@@ -62,7 +60,9 @@
 							<tbody>
 								<?php
 								$i = 1;
-								$cats = $conn->query("SELECT * FROM user_info order by category asc");
+								$cats = $conn->query("SELECT *, u.r_id as rid, u.room_no as uroom_no, r.name as rname FROM user_info u
+								join rooms r on r.id = u.category
+								order by rname asc");
 								while ($row = $cats->fetch_assoc()):
 									?>
 									<tr>
@@ -70,17 +70,17 @@
 											<?php echo $i++ ?>
 										</td>
 										<td class="">
-											<?php echo $row['room_no'] ?>
+											<?php echo $row['uroom_no'] ?>
 										</td>
 										<td class="">
-											<?php echo $row['category'] ?>
+											<?php echo $row['rname'] ?>
 										</td>
 										<td class="text-center">
 											<button class="btn btn-sm btn-primary edit_rooms" type="button"
-												data-id="<?php echo $row['r_id'] ?>"
-												data-name="<?php echo $row['room_no'] ?>">Edit</button>
+												data-id="<?php echo $row['rid'] ?>"
+												data-name="<?php echo $row['uroom_no'] ?>">Edit</button>
 											<button class="btn btn-sm btn-danger delete_rooms" type="button"
-												data-id="<?php echo $row['r_id'] ?>">Delete</button>
+												data-id="<?php echo $row['rid'] ?>">Delete</button>
 										</td>
 									</tr>
 								<?php endwhile; ?>
@@ -100,10 +100,22 @@
 	}
 </style>
 <script>
+	$(document).ready(function () {
+		$('#category').on('change', function () {
+			var category = $(this).val();
+			$.ajax({
+				type: 'POST',
+				url: 'room_c.php',
+				data: { category: category },
+				success: function (data) {
+					$('#pre').val(data);
+				}
+			});
+		});
+	});
 	$('#manage-rooms').submit(function (e) {
 		e.preventDefault()
 		start_load()
-
 		$.ajax({
 			url: 'ajax.php?action=save_rooms',
 			data: new FormData($(this)[0]),
@@ -113,7 +125,6 @@
 			method: 'POST',
 			type: 'POST',
 			success: function (resp) {
-				console.log(resp)
 				if (resp == 1) {
 					alert_toast("Data successfully added", 'success')
 					setTimeout(function () {
@@ -131,12 +142,6 @@
 			}
 		})
 	})
-
-	$(document).ready(function () {
-		start_load();
-		var cat = $('#manage-rooms');
-	});
-
 	$('.edit_rooms').click(function () {
 		start_load()
 		var cat = $('#manage-rooms')

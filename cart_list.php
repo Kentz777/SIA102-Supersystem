@@ -36,7 +36,7 @@
 					$data = "where c.client_ip = '" . $ip . "' ";
 				}
 				$total = 0;
-				$get = $conn->query("SELECT *,c.id as cid FROM cart c inner join product_list p on p.id = c.product_id " . $data);
+				$get = $conn->query("SELECT *,c.id as cid, p.prod_qty as pqty FROM cart c inner join product_list p on p.id = c.product_id " . $data);
 				while ($row = $get->fetch_assoc()):
 					$total += ($row['qty'] * $row['price']);
 					?>
@@ -67,8 +67,9 @@
 											<button class="btn btn-outline-secondary qty-minus" type="button"
 												data-id="<?php echo $row['cid'] ?>"><span class="fa fa-minus"></button>
 										</div>
+										<input type="hidden" name="" id="prod_qty" value="<?php echo $row['prod_qty'] ?>">
 										<input type="number" readonly value="<?php echo $row['qty'] ?>" min=1
-											class="form-control text-center" name="qty">
+											class="form-control text-center"name="qty">
 										<div class="input-group-prepend">
 											<button class="btn btn-outline-secondary qty-plus" type="button" id=""
 												data-id="<?php echo $row['cid'] ?>"><span
@@ -156,9 +157,14 @@
 
 	$('.qty-plus').click(function () {
 		var qty = $(this).parent().siblings('input[name="qty"]').val();
-		$(this).parent().siblings('input[name="qty"]').val(parseInt(qty) + 1);
-		update_qty(parseInt(qty) + 1, $(this).attr('data-id'))
+		if(qty == $('#prod_qty').val()){
+			false;
+		}else{
+			$(this).parent().siblings('input[name="qty"]').val(parseInt(qty) + 1);
+			update_qty(parseInt(qty) + 1, $(this).attr('data-id'))
+		}
 	})
+	
 
 	$('.delete_cart').click(function () {
 		_conf("Are you sure you want to delete this item?", 'delete_cart_item', [$(this).attr('data-id')])
