@@ -191,6 +191,8 @@ class Action
 	{
 		extract($_POST);
 		$data = " room_no = '$room_no' ";
+		$data .= ", category = '$category' ";
+
 		if (empty($r_id)) {
 			$save = $this->db->query("INSERT INTO user_info set " . $data);
 		} else {
