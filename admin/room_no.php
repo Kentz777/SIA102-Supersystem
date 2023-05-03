@@ -13,11 +13,6 @@
 						</div>
 						<div class="card-body">
 							<input type="hidden" name="r_id">
-
-							<div class="input-group mb-3">
-								<span class="input-group-text" name="pre_room">Default</span>
-								<input type="text" class="form-control" name="room_no">
-							</div>
 							
 							<div class="form-group">
 								<label class="control-label">Category </label>
@@ -26,10 +21,13 @@
 									$cat = $conn->query("SELECT * FROM rooms order by name asc ");
 									while ($row = $cat->fetch_assoc()):
 										?>
-										<option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+										<option data-name="<?php echo $row['name'] ?>" value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
 									<?php endwhile; ?>
 								</select>
-
+							</div>
+							<div class="input-group mb-3">
+								<span class="input-group-text" name="pre_room"><?php echo $row['name'] ?></span>
+								<input type="text" class="form-control" name="room_no">
 							</div>
 
 						</div>
@@ -133,6 +131,12 @@
 			}
 		})
 	})
+
+	$(document).ready(function () {
+		start_load();
+		var cat = $('#manage-rooms');
+	});
+
 	$('.edit_rooms').click(function () {
 		start_load()
 		var cat = $('#manage-rooms')
