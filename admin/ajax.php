@@ -120,6 +120,12 @@ if($action == "confirm_order"){
 		echo $save;
 }
 
+if($action == "confirm_order1"){
+	$save = $crud->confirm_order1();
+	if($save)
+		echo $save;
+}
+
 // Services
 
 if($action == "save_service_category"){

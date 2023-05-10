@@ -87,7 +87,6 @@
 							</div>
 						</div>
 					</div>
-
 				<?php endwhile; ?>
 			</div>
 			<div class="col-md-4">
@@ -208,8 +207,11 @@
 	}
 
 	$('#checkout').click(function () {
+		var user_name = '<?php echo $_SESSION['login_user_name']?>';
+		var room_no = '<?php echo $_SESSION['login_room_no']?>';
+		var user_id = '<?php echo $_SESSION['login_user_id']?>';
 		if ('<?php echo isset($_SESSION['login_user_id']) ?>' == 1) {
-			location.replace("index.php?page=checkout")
+			uni_modal("Checkout", "login.php?user_name="+user_name+"&room_no="+room_no+"&user_id"+user_id)
 		} else {
 			uni_modal("Checkout", "login.php?page=checkout")
 		}

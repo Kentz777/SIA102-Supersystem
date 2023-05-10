@@ -382,6 +382,16 @@ class Action
 		}
 	}
 
+	function confirm_order1()
+	{
+		extract($_POST);
+		$save = false;
+			$save = $this->db->query("UPDATE orders set status = 3 where id= " . $id);
+		if ($save) {
+			return 1;
+		}
+	}
+
 
 
 
