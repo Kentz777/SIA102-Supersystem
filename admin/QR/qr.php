@@ -19,7 +19,7 @@ function getUsernameFromEmail($email) {
 if(isset($_POST['submit']) ) {
     $tempDir = 'QR/temp/'; 
     $body =  $_POST['msg'];
-    $filename = $body;
+    $filename = $body.' - '.rand(1000,9999);
     $codeContents = $body; 
     QRcode::png($codeContents, $tempDir.''.$filename.'.png', QR_ECLEVEL_L, 5);
     echo '<div class="qr-field">

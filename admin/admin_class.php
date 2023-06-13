@@ -190,7 +190,8 @@ class Action
 	function save_rooms()
 	{
 		extract($_POST);
-		$data = " room_no = '$room_no' ";
+		$room = $pre.$room_no;
+		$data = " room_no = '$room' ";
 		$data .= ", category = '$category' ";
 
 		if (empty($r_id)) {
@@ -376,6 +377,16 @@ class Action
 			$save = $this->db->query("UPDATE orders set status = 3 where id= " . $id);
 		}
 
+		if ($save) {
+			return 1;
+		}
+	}
+
+	function confirm_order1()
+	{
+		extract($_POST);
+		$save = false;
+			$save = $this->db->query("UPDATE orders set status = 3 where id= " . $id);
 		if ($save) {
 			return 1;
 		}
